@@ -1,60 +1,31 @@
-import React, {FC, useState} from 'react'
-import {useTypedSelector} from '../hooks/useTypedSelector'
+import React, {FC, useEffect} from 'react'
+import {Box, Container, Typography} from '@mui/material'
+import LoginForm from '../components/loginForm/LoginForm'
 import {useActions} from '../hooks/useActions'
-import {Link} from 'react-router-dom'
 
 const LoginPage: FC = () => {
-    const [username, setUsername] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const {loading, error} = useTypedSelector(state => state.auth)
-    const {login} = useActions()
-
-    const handlerUsernameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUsername(e.target.value)
-    }
-
-    const handlerPasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value)
-    }
-
-    const handlerLoginButton = () => {
-        if (username && password) login(username, password)
-    }
+    const {setSelectedPage} = useActions()
+    useEffect(()=>{
+        setSelectedPage('Login')
+    },[])
     return (
-        <div>
+        <Container component="main" maxWidth="xs">
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Typography component="h1" variant="h5">
+                    Sign in to BLAHAJ
+                </Typography>
 
-            <h2>Sign in to BLAHAJ</h2>
+                <LoginForm/>
 
-            <div>
-
-                <h3>Username</h3>
-                <input
-                    value={username}
-                    onChange={handlerUsernameInput}
-                />
-
-
-                <h3>Password</h3>
-                <input
-                    type={'password'}
-                    value={password}
-                    onChange={handlerPasswordInput}
-                />
-
-                {error ? <div>{error}</div> : null}
-                <button
-                    color="success"
-
-                    onClick={handlerLoginButton}
-                >
-                    {loading ? 'Signing in...' : 'Sign in'}
-                </button>
-                <div>
-                    <i> <Link to={'/registration'}>Create an account</Link></i>
-                </div>
-
-            </div>
-        </div>
+            </Box>
+        </Container>
     )
 }
 

@@ -4,6 +4,7 @@ import {useTypedSelector} from './hooks/useTypedSelector'
 import {useActions} from './hooks/useActions'
 import AppRouter from './router/appRouter'
 import MyNavbar from './components/UI/MyNavbar'
+import './styles/App.css'
 
 
 function App() {
