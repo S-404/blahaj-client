@@ -1,12 +1,16 @@
-import React, {FC} from 'react'
+import React, {FC, useEffect} from 'react'
 import RegistrationForm from '../components/registrationForm/RegistrationForm'
 import {Container} from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import {useActions} from '../hooks/useActions'
 
 
 const RegistrationPage: FC = () => {
-
+    const {setSelectedPage} = useActions()
+    useEffect(()=>{
+        setSelectedPage('Registration')
+    },[])
     return (
         <Container component="main" maxWidth="xs">
             <Box

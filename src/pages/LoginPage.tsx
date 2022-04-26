@@ -1,9 +1,13 @@
-import React, {FC} from 'react'
-import {Container,Box,Typography} from '@mui/material'
+import React, {FC, useEffect} from 'react'
+import {Box, Container, Typography} from '@mui/material'
 import LoginForm from '../components/loginForm/LoginForm'
+import {useActions} from '../hooks/useActions'
 
 const LoginPage: FC = () => {
-
+    const {setSelectedPage} = useActions()
+    useEffect(()=>{
+        setSelectedPage('Login')
+    },[])
     return (
         <Container component="main" maxWidth="xs">
             <Box
