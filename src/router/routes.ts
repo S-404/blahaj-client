@@ -7,9 +7,9 @@ import HomePage from '../pages/HomePage'
 
 
 export const privateRoutes: RoutesTypes[] = [
+    {path: '/', component: HomePage, shortName: 'Home'},
     {path: '/user', component: UserPage, shortName: 'Personal Page'},
     {path: '/todos', component: TodosPage, shortName: 'Team Routines'},
-    {path: '/', component: HomePage, shortName: 'Home'},
 ]
 
 export const publicRoutes: RoutesTypes[] = [
