@@ -1,14 +1,14 @@
-import {Dispatch} from "redux"
-import {AuthAction, AuthActionTypes} from "../../types/authTypes"
-import AuthService from "../../../services/authService"
-import axios from "axios"
+import {Dispatch} from 'redux'
+import {AuthAction, AuthActionTypes} from '../../types/authTypes'
+import AuthService from '../../../services/authService'
+import axios from 'axios'
 
-export const registration = (username: string, password: string) => {
+export const registration = (username: string, password: string, email: string) => {
     return async (dispatch: Dispatch<AuthAction>) => {
         try {
             dispatch({type: AuthActionTypes.FETCH_USER})
-            const response = await AuthService.registration(username, password)
-            localStorage.setItem("token", response.data.accessToken)
+            const response = await AuthService.registration(username, password, email)
+            localStorage.setItem('token', response.data.accessToken)
             dispatch({type: AuthActionTypes.FETCH_USER_SUCCESS, value: response.data.user})
             dispatch({type: AuthActionTypes.SET_AUTH, value: true})
         } catch (e) {
@@ -16,7 +16,7 @@ export const registration = (username: string, password: string) => {
             if (axios.isAxiosError(e)) {
                 errMsg = e?.response?.data?.message
             }
-            let message = errMsg ? errMsg : "connection failed"
+            let message = errMsg ? errMsg : 'connection failed'
             dispatch({
                 type: AuthActionTypes.FETCH_USER_ERROR,
                 value: message
