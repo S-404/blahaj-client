@@ -1,15 +1,15 @@
-import React, {Dispatch, FC, SetStateAction} from 'react'
+import React, {FC} from 'react'
 import {IconButton} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import {useActions} from '../../hooks/useActions'
 
-interface BurgerButton {
-    setDrawerIsOpen: Dispatch<SetStateAction<boolean>>;
-}
 
-const BurgerButton: FC<BurgerButton> = ({setDrawerIsOpen}) => {
+const BurgerButton: FC = () => {
+
+    const {setIsOpenDrawer} = useActions()
 
     const buttonHandler = () => {
-        setDrawerIsOpen(true)
+        setIsOpenDrawer(true)
     }
 
     return (

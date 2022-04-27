@@ -1,24 +1,24 @@
-import React, {Dispatch, FC, SetStateAction} from 'react'
+import React, {FC} from 'react'
 import {Box, Divider, Drawer, List, ListItem, ListItemText} from '@mui/material'
-import {privateRoutes} from '../../../router/routes'
+import {privateRoutes} from '../../router/routes'
 import {Link} from 'react-router-dom'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
+import {useActions} from '../../hooks/useActions'
 
 
-interface MyNavbarDrawer {
-    drawerIsOpen: boolean;
-    setDrawerIsOpen: Dispatch<SetStateAction<boolean>>;
-}
+const MyDrawer: FC = () => {
 
-const MyDrawer: FC<MyNavbarDrawer> = ({drawerIsOpen, setDrawerIsOpen}) => {
+    const {isOpenDrawer} = useTypedSelector(state => state.nav)
+    const {setIsOpenDrawer} = useActions()
 
-    const handleClose = ()=>{
-        setDrawerIsOpen(false)
+    const handleClose = () => {
+        setIsOpenDrawer(false)
     }
 
     return (
         <Drawer
             anchor="left"
-            open={drawerIsOpen}
+            open={isOpenDrawer}
             onClose={handleClose}
         >
             <Box
