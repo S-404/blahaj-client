@@ -1,5 +1,5 @@
 import {isValidEmail, isValidPassword, isValidUsername} from './validations'
-import {isValidValues} from '../components/types/RegistrationInputTypes'
+import {isValidValues} from '../components/registrationForm/types/RegistrationFormTypes'
 
 
 export const password1Check = (password1: string): isValidValues => {

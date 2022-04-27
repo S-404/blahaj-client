@@ -1,14 +1,14 @@
 import React, {Dispatch, FC, SetStateAction} from 'react'
 import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip} from '@mui/material'
 import {AccountCircle, Logout, Settings} from '@mui/icons-material'
-import {useActions} from '../../../hooks/useActions'
+import {useActions} from '../../hooks/useActions'
 
-interface AccountMenu {
+interface IAccountMenu {
     anchorEl: null | HTMLElement;
     setAnchorEl: Dispatch<SetStateAction<null | HTMLElement>>;
 }
 
-const AccountMenu: FC<AccountMenu> = ({setAnchorEl, anchorEl}) => {
+const AccountMenu: FC<IAccountMenu> = ({setAnchorEl, anchorEl}) => {
 
     const {logout} = useActions()
 
@@ -22,6 +22,7 @@ const AccountMenu: FC<AccountMenu> = ({setAnchorEl, anchorEl}) => {
         setAnchorEl(null)
         logout()
     }
+
     return (
         <>
             <Tooltip title="Open settings">

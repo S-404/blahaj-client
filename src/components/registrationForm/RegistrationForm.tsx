@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react'
-import {IsValidInputsValues} from '../types/RegistrationInputTypes'
+import {IsValidInputsValues} from './types/RegistrationFormTypes'
 import {emailCheck, password1Check, password2Check, usernameCheck} from '../../helpers/authValidations'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
