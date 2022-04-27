@@ -21,7 +21,7 @@ const MyToolbar: FC = () => {
                 {selectedPage}
             </Typography>
 
-            <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+            <Box sx={{display: { md: 'flex'}}}>
                 {isAuth ?
                     <AccountMenu
                         anchorEl={anchorEl}
