@@ -6,5 +6,6 @@ export interface AuthResponseTypes {
 
 export interface IUser {
     username: string;
+    email: string;
     id: number;
 }
