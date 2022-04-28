@@ -1,4 +1,4 @@
-export interface TeamsResponseTypes {
+export interface TeamsResponse {
     teams: ITeam[];
 }
 

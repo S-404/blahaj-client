@@ -1,5 +1,5 @@
 import {AuthAction, AuthActionTypes, AuthState} from "../types/authTypes"
-import {IUser} from "../../services/types/authResponseTypes"
+import {IUser} from "../../services/types/authResponse"
 
 const authState: AuthState = {
     isAuth: false,

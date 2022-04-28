@@ -1,11 +1,12 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
-import {TeamsResponseTypes} from './types/teamsResponseTypes'
+import {TeamsResponse} from './types/teamsResponse'
+import {UserParticipationResponse} from './types/userParticipationResponse'
 
 
 export default class TeamsService {
 
-    static fetchTeams(): Promise<AxiosResponse<TeamsResponseTypes>> {
-        return _api.get<TeamsResponseTypes>(`teams/teams/`)
+    static fetchTeams(): Promise<AxiosResponse<TeamsResponse>> {
+        return _api.get<TeamsResponse>(`teams/teams/`)
     }
 }
