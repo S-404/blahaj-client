@@ -9,4 +9,9 @@ export default class TeamsService {
     static fetchTeams(): Promise<AxiosResponse<TeamsResponse>> {
         return _api.get<TeamsResponse>(`teams/teams/`)
     }
+
+    static fetchUserParticipation(): Promise<AxiosResponse<UserParticipationResponse[]>> {
+        return _api.get<UserParticipationResponse[]>(`teams/participant/`)
+    }
+
 }
