@@ -1,4 +1,4 @@
-import {IUser} from "../../services/types/authResponseTypes"
+import {IUser} from "../../services/types/authResponse"
 
 export interface AuthState {
     isAuth: boolean;

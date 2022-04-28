@@ -1,7 +1,8 @@
 import React, {Dispatch, FC, SetStateAction} from 'react'
-import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip} from '@mui/material'
+import {Avatar, Box, Button, Divider, ListItemIcon, Menu, MenuItem, Tooltip} from '@mui/material'
 import {AccountCircle, Logout, Settings} from '@mui/icons-material'
 import {useActions} from '../../hooks/useActions'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
 
 interface IAccountMenu {
     anchorEl: null | HTMLElement;
@@ -10,6 +11,7 @@ interface IAccountMenu {
 
 const AccountMenu: FC<IAccountMenu> = ({setAnchorEl, anchorEl}) => {
 
+    const {user} = useTypedSelector(state => state.auth)
     const {logout} = useActions()
 
     const handleMenu = (e: React.MouseEvent<HTMLElement>) => {
@@ -26,8 +28,8 @@ const AccountMenu: FC<IAccountMenu> = ({setAnchorEl, anchorEl}) => {
     return (
         <>
             <Tooltip title="Open settings">
-                <IconButton
-                    size="large"
+                <Button
+                    size="small"
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
@@ -35,7 +37,9 @@ const AccountMenu: FC<IAccountMenu> = ({setAnchorEl, anchorEl}) => {
                     color="inherit"
                 >
                     <AccountCircle/>
-                </IconButton>
+                    {user.email}
+                </Button>
+
             </Tooltip>
 
             <Menu

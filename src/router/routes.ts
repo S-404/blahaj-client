@@ -5,15 +5,22 @@ import UserPage from '../pages/UserPage'
 import TodosPage from '../pages/TodosPage'
 import HomePage from '../pages/HomePage'
 
-
-export const privateRoutes: RoutesTypes[] = [
+export const generalRoutes: RoutesTypes[] = [
     {path: '/', component: HomePage, shortName: 'Home'},
     {path: '/user', component: UserPage, shortName: 'Personal Page'},
-    {path: '/todos', component: TodosPage, shortName: 'Team Routines'},
+]
+
+export const toolsRoutes: RoutesTypes[] = [
+    {path: '/teams', component: TodosPage, shortName: 'Team Routines'},
+]
+
+export const privateRoutes: RoutesTypes[] = [
+    ...generalRoutes,
+    ...toolsRoutes
 ]
 
 export const publicRoutes: RoutesTypes[] = [
+    {path: '/', component: HomePage, shortName: 'Home'},
     {path: '/login', component: LoginPage, shortName: 'Login Page'},
     {path: '/registration', component: RegistrationPage, shortName: 'Registration Page'},
-    {path: '/', component: HomePage, shortName: 'Home'},
 ]

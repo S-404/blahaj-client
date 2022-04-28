@@ -1,4 +1,4 @@
-export interface AuthResponseTypes {
+export interface AuthResponse {
     accessToken: string;
     refreshToken: string;
     user: IUser;
@@ -6,5 +6,6 @@ export interface AuthResponseTypes {
 
 export interface IUser {
     username: string;
+    email: string;
     id: number;
 }

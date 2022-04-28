@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 import {AppBar, Box} from '@mui/material'
-import MyDrawer from './MyDrawer'
+import MyDrawer from './myDrawer/MyDrawer'
 import MyToolbar from './MyToolbar'
 
 const MyNavbar: FC = () => {
