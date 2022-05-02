@@ -1,15 +1,20 @@
 import React, {FC, useEffect} from 'react'
 import {useActions} from '../hooks/useActions'
+import Profile from '../components/Profile/Profile'
+import {Container} from '@mui/material'
 
 const UserPage: FC = () => {
+
     const {setSelectedPage} = useActions()
+
     useEffect(()=>{
         setSelectedPage('Personal Page')
     },[])
+
     return (
-        <div>
-            user page
-        </div>
+        <Container component="main" maxWidth="md" >
+            <Profile/>
+        </Container>
     )
 }
 
