@@ -1,6 +1,8 @@
 import {setNewTeamModal} from './setNewTeamModal'
+import {setDeleteAlertModal} from './setDeleteAlertModal'
 
 
 export const modalsActions = {
-    SetNewTeamModal: setNewTeamModal,
+    setNewTeamModal,
+    setDeleteAlertModal,
 }
