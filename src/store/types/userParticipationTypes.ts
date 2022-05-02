@@ -1,4 +1,4 @@
-import {UserParticipationResponse} from '../../services/types/userParticipationResponse'
+import {UserParticipationResponse} from '../../services/types/teamsResponse'
 
 export interface UserParticipationState {
     userParticipation: UserParticipationResponse[];
@@ -7,16 +7,12 @@ export interface UserParticipationState {
 }
 
 export enum UserParticipationActionTypes {
-    SET_USER_PARTICIPATION = "SET_USER_PARTICIPATION",
     FETCH_USER_PARTICIPATION = "FETCH_USER_PARTICIPATION",
     FETCH_USER_PARTICIPATION_SUCCESS = "FETCH_USER_PARTICIPATION_SUCCESS",
     FETCH_USER_PARTICIPATION_ERROR = "FETCH_USER_PARTICIPATION_ERROR",
+    REMOVE_PARTICIPATION = 'REMOVE_PARTICIPATION',
 }
 
-interface SetUserParticipationAction {
-    type: UserParticipationActionTypes.SET_USER_PARTICIPATION;
-    value: UserParticipationResponse[];
-}
 
 interface FetchUserParticipationAction {
     type: UserParticipationActionTypes.FETCH_USER_PARTICIPATION;
@@ -33,8 +29,14 @@ interface FetchUserParticipationErrorAction {
 }
 
 
+interface RemoveParticipationAction {
+    type: UserParticipationActionTypes.REMOVE_PARTICIPATION;
+    value: number;
+}
+
+
 export type  UserParticipationAction =
-    SetUserParticipationAction
     | FetchUserParticipationAction
     | FetchUserParticipationSuccessAction
     | FetchUserParticipationErrorAction
+    | RemoveParticipationAction

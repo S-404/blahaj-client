@@ -1,4 +1,4 @@
-import {ITeam} from "../../services/types/teamsResponse"
+import {ITeam} from '../../services/types/teamsResponse'
 
 export interface TeamsState {
     teams: ITeam[];
@@ -7,16 +7,11 @@ export interface TeamsState {
 }
 
 export enum TeamsActionTypes {
-    SET_TEAMS = "SET_TEAMS",
-    FETCH_TEAMS = "FETCH_TEAMS",
-    FETCH_TEAMS_SUCCESS = "FETCH_TEAMS_SUCCESS",
-    FETCH_TEAMS_ERROR = "FETCH_TEAMS_ERROR",
+    FETCH_TEAMS = 'FETCH_TEAMS',
+    FETCH_TEAMS_SUCCESS = 'FETCH_TEAMS_SUCCESS',
+    FETCH_TEAMS_ERROR = 'FETCH_TEAMS_ERROR',
 }
 
-interface SetTeamsAction {
-    type: TeamsActionTypes.SET_TEAMS;
-    value: ITeam[];
-}
 
 interface FetchTeamsAction {
     type: TeamsActionTypes.FETCH_TEAMS;
@@ -33,8 +28,8 @@ interface FetchTeamsErrorAction {
 }
 
 
+
 export type  TeamsAction =
-    SetTeamsAction
     | FetchTeamsAction
     | FetchTeamsSuccessAction
     | FetchTeamsErrorAction
