@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from 'react'
 import {useActions} from '../hooks/useActions'
-import Profile from '../components/Profile/Profile'
+import Profile from '../components/profile/Profile'
 import {Container} from '@mui/material'
 
 const UserPage: FC = () => {
