@@ -8,7 +8,7 @@ export const isValidEmail = (email: string) => {
 
 export const isValidString = (text: string) => {
     return !!text.match(
-        /^[а-яА-Яa-zA-Z\s]+/
+        /^[a-zA-Zа-яА-Я0-9\s_.-]*$/
     )
 }
 
@@ -18,7 +18,7 @@ export const isValidPhone = (text: string) => {
     )
 }
 
-export const isValidUsername = (text: string) => {
+export const isValidName = (text: string) => {
     return !!text.match(
         /^[a-zA-Z0-9_-]*$/
     )
