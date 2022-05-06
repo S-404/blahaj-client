@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
-import MyTeams from '../Teams/MyTeams'
+import MyTeams from '../teams/MyTeams'
 import Card from '@mui/material/Card'
 import {CardHeader} from '@mui/material'
 import Button from '@mui/material/Button'

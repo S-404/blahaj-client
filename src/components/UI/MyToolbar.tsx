@@ -1,9 +1,10 @@
 import React, {FC} from 'react'
-import {Box, Button, Toolbar, Typography} from '@mui/material'
+import {Box, Button, Toolbar, Typography, Divider} from '@mui/material'
 import BurgerButton from './BurgerButton'
 import AccountMenu from './AccountMenu'
 import {Link as RouterLink} from 'react-router-dom'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
+import TeamSelector from './TeamSelector'
 
 
 const MyToolbar: FC = () => {
@@ -23,10 +24,15 @@ const MyToolbar: FC = () => {
 
             <Box sx={{display: { md: 'flex'}}}>
                 {isAuth ?
-                    <AccountMenu
-                        anchorEl={anchorEl}
-                        setAnchorEl={setAnchorEl}
-                    />
+                    <>
+                        <TeamSelector/>
+                        <Divider orientation="vertical" flexItem/>
+                        <AccountMenu
+                            anchorEl={anchorEl}
+                            setAnchorEl={setAnchorEl}
+                        />
+                    </>
+
                     :
                     <Button
                         color="inherit"
