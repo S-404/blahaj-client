@@ -1,6 +1,6 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
-import {TasksResponse} from './types/tasksResponse'
+import {ITask, TasksResponse} from './types/tasksResponse'
 
 
 export default class TasksService {
@@ -9,5 +9,11 @@ export default class TasksService {
         return _api.get<TasksResponse[]>(`todos/tasks/${teamId}`)
     }
 
+    static createTask(newTask: ITask): Promise<AxiosResponse<TasksResponse>> {
+        return _api.post<TasksResponse>(`todos/tasks`, newTask)
+    }
 
+    static removeTask(taskId: number): Promise<AxiosResponse> {
+        return _api.delete(`todos/tasks/${taskId}`)
+    }
 }
