@@ -22,8 +22,9 @@ export const userParticipationReducer = (
         case UserParticipationActionTypes.FETCH_USER_PARTICIPATION_ERROR:
             return {...state, loading: false, error: action.value}
         case UserParticipationActionTypes.REMOVE_PARTICIPATION:
-            const newParticipationArray = state.userParticipation.filter(team => team.teamId !== action.value)
-            console.log(newParticipationArray)
+            const newParticipationArray = state
+                .userParticipation
+                .filter(team => team.teamId !== action.value)
             return {...state, loading: false, error: null, userParticipation: newParticipationArray}
         default:
             return state
