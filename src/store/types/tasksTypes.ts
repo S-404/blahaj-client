@@ -10,6 +10,8 @@ export enum TasksActionTypes {
     FETCH_TASKS = 'FETCH_TASKS',
     FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS',
     FETCH_TASKS_ERROR = 'FETCH_TASKS_ERROR',
+    ADD_TASK = 'ADD_TASK',
+    REMOVE_TASK = 'REMOVE_TASK',
 }
 
 interface FetchTasksAction {
@@ -26,9 +28,20 @@ interface FetchTasksErrorAction {
     value: string;
 }
 
+interface AddTaskAction {
+    type: TasksActionTypes.ADD_TASK;
+    value: TasksResponse;
+}
+
+interface removeTaskAction {
+    type: TasksActionTypes.REMOVE_TASK;
+    value: number;
+}
 
 
 export type  TasksAction =
     | FetchTasksAction
     | FetchTasksSuccessAction
     | FetchTasksErrorAction
+    | AddTaskAction
+    | removeTaskAction
