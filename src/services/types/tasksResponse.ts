@@ -1,11 +1,15 @@
-export interface TasksResponse {
-    id: number;
+export interface ITask {
+    id?: number;
     teamId: number;
     name: string;
     periodicity: number;
     deadline: number;
     taskGroup: string;
     description: string;
+}
+
+export interface TasksResponse extends ITask {
+    id: number;
     note: string;
     updatedBy: string;
     startedAt: string;
