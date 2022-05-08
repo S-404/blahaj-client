@@ -1,28 +1,9 @@
 import React, {FC, useState} from 'react'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
 import {isValidName} from '../../../helpers/validations'
 import {useActions} from '../../../hooks/useActions'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
-import Modal from '@mui/material/Modal'
+import {Button, Form, FormFeedback, FormGroup, Input, Label, Modal, ModalBody, ModalHeader} from 'reactstrap'
 
-const style = {
-    box: {
-        position: 'absolute' as 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        display: 'flex',
-        flexDirection: 'column',
-        p: 4,
-    },
-}
 
 const NewTeamForm: FC = () => {
 
@@ -53,41 +34,50 @@ const NewTeamForm: FC = () => {
 
     return (
         <Modal
-            open={newTeamModal}
-            onClose={() => setNewTeamModal(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+            centered
+            size="md"
+            isOpen={newTeamModal}
+            toggle={() => setNewTeamModal(false)}
         >
-            <Box sx={style.box}>
-                <Typography id="modal-modal-title" variant="h4" component="h2">
-                    New Team
-                </Typography>
-                <TextField
-                    error={!nameIsValid}
-                    id="standard-basic"
-                    label="Name"
-                    variant="standard"
-                    helperText={`Use Letters.`}
-                    value={name}
-                    onChange={nameInputHandler}
-                />
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Description"
-                    multiline
-                    rows={4}
-                    sx={{mt: 2, mb: 2}}
-                    value={description}
-                    onChange={descriptionInputHandler}
-                />
-                <Button
-                    color="success"
-                    variant="contained"
-                    onClick={applyButtonHandler}
-                >
-                    Apply
-                </Button>
-            </Box>
+            <ModalHeader
+                toggle={() => setNewTeamModal(false)}
+            > New Team</ModalHeader>
+            <ModalBody>
+                <Form>
+                    <FormGroup>
+                        <Label>Name</Label>
+                        <Input
+                            invalid={!nameIsValid}
+                            value={name}
+                            onChange={nameInputHandler}
+                        />
+                        <FormFeedback>
+                            Use Letters.
+                        </FormFeedback>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Description</Label>
+                        <Input
+                            type="textarea"
+                            rows={4}
+                            value={description}
+                            onChange={descriptionInputHandler}
+                        />
+                        <FormFeedback>
+                            Use Letters.
+                        </FormFeedback>
+                    </FormGroup>
+
+                    <Button
+                        color="success"
+                        type="submit"
+                        onClick={applyButtonHandler}
+                    >
+                        Apply
+                    </Button>
+                </Form>
+            </ModalBody>
         </Modal>
     )
 }

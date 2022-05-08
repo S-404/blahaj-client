@@ -2,9 +2,7 @@ import React, {FC} from 'react'
 import {useActions} from '../../../hooks/useActions'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import NewTeamForm from './NewTeamForm'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-
+import {Button} from 'reactstrap'
 
 const NewTeamPanel: FC = () => {
 
@@ -15,14 +13,21 @@ const NewTeamPanel: FC = () => {
     return (
         <>
             {!userParticipation.length ?
-                <Typography>
+                <div>
                     There aren't any teams. You can
-                    <Button onClick={() => setNewTeamModal(true)}>
+                    <Button
+                        onClick={() => setNewTeamModal(true)}
+                    >
                         Put together a team
                     </Button>
-                </Typography>
+                </div>
                 :
-                <Button onClick={() => setNewTeamModal(true)}>
+                <Button
+                    outline
+                    color='success'
+                    size='sm'
+                    onClick={() => setNewTeamModal(true)}
+                >
                     Put together a team
                 </Button>
             }

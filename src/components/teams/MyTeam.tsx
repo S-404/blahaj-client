@@ -1,11 +1,7 @@
 import React, {FC} from 'react'
 import {UserParticipationResponse} from '../../services/types/teamsResponse'
-import Chip from '@mui/material/Chip'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import IconButton from '@mui/material/IconButton'
 import {useActions} from '../../hooks/useActions'
-import {Delete, Edit} from '@mui/icons-material'
+import {Badge, Button, Label, ListGroupItem} from 'reactstrap'
 
 
 const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
@@ -19,37 +15,27 @@ const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
     }
 
     return (
-        <ListItem>
-
-            <ListItemText
-                primary={team.name}
-                secondary={team.description}
-            />
-
-            <Chip
-                label={`Role: ${isAdmin ? 'Admin' : 'User'}`}
-            />
-            <Chip
-                variant="outlined"
-                label={`participants: ${team.participants.length}`}
-            />
-
-            <IconButton
-                edge="end"
-                aria-label="delete"
+        <ListGroupItem>
+            <Label>{team.name}</Label>
+            <p>{team.description}</p>
+            <Badge color="primary">{`Role: ${isAdmin ? 'Admin' : 'User'}`}</Badge>
+            <Badge color="secondary">{`participants: ${team.participants.length}`}</Badge>
+            <Button
+                outline
+                color="danger"
+                size='sm'
                 onClick={leaveTeamHandler}
             >
-                <Delete/>
-            </IconButton>
-            <IconButton
-                edge="end"
-                aria-label="delete"
+                Leave
+            </Button>
+            <Button
+                outline
+                color="secondary"
+                size='sm'
             >
-                <Edit/>
-            </IconButton>
-
-
-        </ListItem>
+                Edit
+            </Button>
+        </ListGroupItem>
     )
 }
 

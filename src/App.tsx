@@ -3,7 +3,7 @@ import {BrowserRouter as Router,} from 'react-router-dom'
 import {useTypedSelector} from './hooks/useTypedSelector'
 import {useActions} from './hooks/useActions'
 import AppRouter from './router/appRouter'
-import MyNavbar from './components/UI/MyNavbar'
+import MyNavbar from './components/UI/myNavbar/MyNavbar'
 import './styles/App.css'
 
 

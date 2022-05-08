@@ -1,10 +1,7 @@
 import React, {FC} from 'react'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import MyTeams from '../teams/MyTeams'
-import Card from '@mui/material/Card'
-import {CardHeader} from '@mui/material'
-import Button from '@mui/material/Button'
-
+import {Card, CardBody, CardHeader, CardSubtitle, CardTitle, Button} from 'reactstrap'
 
 const Profile: FC = () => {
 
@@ -12,22 +9,25 @@ const Profile: FC = () => {
 
     return (
         <Card>
-            <CardHeader
-                title={user.username}
-                subheader={user.email}
-                color='light'
-                action={
-                <>
-                    <Button>
-                        Update password
-                    </Button>
-                    <Button>
-                        Update credentials
-                    </Button>
-                </>
+            <CardHeader>
+                <CardTitle>{user.username}</CardTitle>
+                <CardSubtitle>{user.email}</CardSubtitle>
+            </CardHeader>
+            <CardBody>
+                <Button
+                    size="sm"
+                    outline
+                >
+                    Update password
+                </Button>
+                <Button
+                    size="sm"
+                    outline
+                >
+                    Update credentials
+                </Button>
+            </CardBody>
 
-            }
-            />
 
             <MyTeams/>
 
