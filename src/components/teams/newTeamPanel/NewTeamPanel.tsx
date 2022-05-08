@@ -2,11 +2,13 @@ import React, {FC} from 'react'
 import {useActions} from '../../../hooks/useActions'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import NewTeamForm from './NewTeamForm'
+import MyModal from '../../UI/MyModal'
 import {Button} from 'reactstrap'
 
 const NewTeamPanel: FC = () => {
 
     const {userParticipation} = useTypedSelector(state => state.participation)
+    const {newTeamModal} = useTypedSelector(state => state.modals)
     const {setNewTeamModal} = useActions()
 
 
@@ -24,15 +26,22 @@ const NewTeamPanel: FC = () => {
                 :
                 <Button
                     outline
-                    color='success'
-                    size='sm'
+                    color="success"
+                    size="sm"
                     onClick={() => setNewTeamModal(true)}
                 >
                     Put together a team
                 </Button>
             }
 
-            <NewTeamForm/>
+
+            <MyModal
+                visible={newTeamModal}
+                setVisible={setNewTeamModal}
+                title={`New Team`}
+            >
+                <NewTeamForm/>
+            </MyModal>
 
         </>
 
