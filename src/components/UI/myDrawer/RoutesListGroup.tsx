@@ -1,12 +1,9 @@
 import React, {FC} from 'react'
 import {ListGroup, ListGroupItem} from 'reactstrap'
 import {Link} from 'react-router-dom'
-import {RoutesTypes} from '../../../router/types/routesTypes'
 import {useActions} from '../../../hooks/useActions'
+import {RoutesListGroupProps} from '../types/routesListGroupTypes'
 
-interface RoutesListGroupProps {
-    routes: RoutesTypes[]
-}
 
 const RoutesListGroup: FC<RoutesListGroupProps> = ({routes}) => {
 
