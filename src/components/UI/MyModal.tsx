@@ -1,12 +1,7 @@
 import React, {FC} from 'react'
 import {Modal, ModalHeader, ModalBody} from 'reactstrap'
+import {MyModalProps} from './types/myModalTypes'
 
-export interface MyModalProps {
-    visible: boolean;
-    setVisible: (value: boolean) => void;
-    children: React.ReactElement;
-    title: string;
-}
 
 const MyModal: FC<MyModalProps> = ({setVisible, visible, title, children}) => {
     return (
