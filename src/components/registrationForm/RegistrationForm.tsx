@@ -4,7 +4,7 @@ import {emailCheck, password1Check, password2Check, usernameCheck} from '../../h
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
 import {Link as RouterLink} from 'react-router-dom'
-import {TextField, Box, Button, Alert, Link} from '@mui/material'
+import {Form, Alert, FormFeedback, FormGroup, Input, Label, Button, NavLink} from 'reactstrap'
 
 const RegistrationForm: FC = () => {
 
@@ -77,79 +77,72 @@ const RegistrationForm: FC = () => {
 
     return (
 
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
+        <Form onSubmit={handleSubmit}>
+            <FormGroup>
+                <Label>Username</Label>
+                <Input
+                    name={'username'}
+                    value={username}
+                    onChange={handlerUsernameInput}
+                    invalid={isValidInputsValues.username.isInvalid}
+                />
+                <FormFeedback>
+                    Use Letters and Spaces.
+                </FormFeedback>
+            </FormGroup>
 
-            <TextField
-                error={isValidInputsValues.username.isInvalid}
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                value={username}
-                onChange={handlerUsernameInput}
-                helperText={`Use Letters and Spaces.`}
-                autoFocus
-            />
-            <TextField
-                error={isValidInputsValues.email.isInvalid}
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                value={email}
-                onChange={handlerEmailInput}
-                helperText={`Keep mail@mail.com template.`}
-                autoFocus
-            />
-            <TextField
-                error={isValidInputsValues.password1.isInvalid}
-                margin="normal"
-                required
-                fullWidth
-                name="password1"
-                label="Password"
-                type="password"
-                id="password1"
-                value={password1}
-                onChange={handlerPassword1Input}
-                helperText={`Should contain at least 1 digit, min 4 characters`}
-            />
+            <FormGroup>
+                <Label>Email</Label>
+                <Input
+                    name={'email'}
+                    value={email}
+                    onChange={handlerEmailInput}
+                    invalid={isValidInputsValues.email.isInvalid}
+                />
+                <FormFeedback>
+                    Keep mail@mail.com template.
+                </FormFeedback>
+            </FormGroup>
 
-            <TextField
-                error={isValidInputsValues.password2.isInvalid}
-                margin="normal"
-                required
-                fullWidth
-                name="password2"
-                label="Repeat Password"
-                type="password"
-                id="password2"
-                value={password2}
-                onChange={handlerPassword2Input}
-                helperText={` Please make sure your passwords match.`}
-            />
+            <FormGroup>
+                <Label>Password</Label>
+                <Input
+                    name={'password1'}
+                    value={password1}
+                    type={'password'}
+                    onChange={handlerPassword1Input}
+                    invalid={isValidInputsValues.password1.isInvalid}
+                />
+                <FormFeedback>
+                    Should contain at least 1 digit, min 4 characters.
+                </FormFeedback>
+            </FormGroup>
 
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{mt: 3, mb: 2}}
-            >
+            <FormGroup>
+                <Label>Repeat Password</Label>
+                <Input
+                    name={'password2'}
+                    value={password2}
+                    type={'password'}
+                    onChange={handlerPassword2Input}
+                    invalid={isValidInputsValues.password2.isInvalid}
+                />
+                <FormFeedback>
+                    Please make sure your passwords match.
+                </FormFeedback>
+            </FormGroup>
+
+            <Button type="submit">
                 {loading ? 'Signing up...' : 'Sign up'}
             </Button>
 
-            {error ? <Alert severity="error">{error}</Alert> : null}
+            {error ? <Alert>{error}</Alert> : null}
 
-            <Link component={RouterLink} to="/login" variant="body2">
+            <NavLink tag={RouterLink} to="/login">
                 <i>{'Already Registered? Sign In'}</i>
-            </Link>
+            </NavLink>
 
-        </Box>
+        </Form>
 
     )
 }

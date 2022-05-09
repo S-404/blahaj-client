@@ -1,39 +1,40 @@
 import React, {FC} from 'react'
-import {Box, Drawer} from '@mui/material'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
-import {useActions} from '../../../hooks/useActions'
 import PrivateList from './PrivateList'
 import PublicList from './PublicList'
+import {Offcanvas, OffcanvasBody, OffcanvasHeader} from 'reactstrap'
+import {useActions} from '../../../hooks/useActions'
 
 
 const MyDrawer: FC = () => {
 
     const {isOpenDrawer} = useTypedSelector(state => state.nav)
     const {isAuth} = useTypedSelector(state => state.auth)
+
     const {setIsOpenDrawer} = useActions()
 
-    const handleClose = () => {
+    const toggleHandler = () => {
         setIsOpenDrawer(false)
     }
 
     return (
-        <Drawer
-            anchor="left"
-            open={isOpenDrawer}
-            onClose={handleClose}
+        <Offcanvas
+            isOpen={isOpenDrawer}
+            toggle={toggleHandler}
         >
-            <Box
-                sx={{width: 250}}
-                role="presentation"
+            <OffcanvasHeader
+                toggle={toggleHandler}
             >
+                Menu
+            </OffcanvasHeader>
+            <OffcanvasBody>
                 {isAuth ?
                     <PrivateList/>
                     :
                     <PublicList/>
                 }
-
-            </Box>
-        </Drawer>
+            </OffcanvasBody>
+        </Offcanvas>
     )
 }
 

@@ -1,12 +1,8 @@
 import React from 'react'
-import {TextField} from '@mui/material'
-import Button from '@mui/material/Button'
-import Alert from '@mui/material/Alert'
-import Link from '@mui/material/Link'
 import {Link as RouterLink} from 'react-router-dom'
-import Box from '@mui/material/Box'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useActions} from '../../hooks/useActions'
+import {Alert, Button, NavLink, Form, FormGroup, Input, Label} from 'reactstrap'
 
 const LoginForm = () => {
 
@@ -25,45 +21,33 @@ const LoginForm = () => {
     }
 
     return (
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
+        <Form onSubmit={handleSubmit}>
 
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-            />
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-            />
+            <FormGroup>
+                <Label for="username">Username</Label>
+                <Input name="username"/>
+            </FormGroup>
 
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{mt: 3, mb: 2}}
-            >
+            <FormGroup>
+                <Label for="password">Password</Label>
+                <Input
+                    type="password"
+                    name="password"
+                />
+            </FormGroup>
+
+
+            <Button type="submit">
                 {loading ? 'Signing in...' : 'Sign in'}
             </Button>
 
-            {error ? <Alert severity="error">{error}</Alert> : null}
+            {error ? <Alert>{error}</Alert> : null}
 
-            <Link component={RouterLink} to="/registration" variant="body2">
+            <NavLink tag={RouterLink} to="/registration">
                 <i>{'Don\'t have an account? Sign Up'}</i>
-            </Link>
+            </NavLink>
 
-        </Box>
+        </Form>
     )
 }
 

@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import {Box, Container, Typography} from '@mui/material'
+import {Container} from 'reactstrap'
 import LoginForm from '../components/loginForm/LoginForm'
 import {useActions} from '../hooks/useActions'
 
@@ -9,22 +9,9 @@ const LoginPage: FC = () => {
         setSelectedPage('Login')
     },[])
     return (
-        <Container component="main" maxWidth="xs">
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Typography component="h1" variant="h5">
-                    Sign in to BLAHAJ
-                </Typography>
-
+        <Container className="col-md-3 mt-5">
+                <h5>Sign in to BLAHAJ</h5>
                 <LoginForm/>
-
-            </Box>
         </Container>
     )
 }
