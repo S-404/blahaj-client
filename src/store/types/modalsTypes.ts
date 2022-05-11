@@ -2,12 +2,14 @@ export interface ModalsState {
     newTeamModal: boolean;
     deleteAlertModal: boolean;
     newTaskModal: boolean;
+    editTaskModal: boolean;
 }
 
 export enum ModalsActionTypes {
     SET_NEW_TEAM_MODAL = 'SET_NEW_TEAM_MODAL',
     SET_DELETE_ALERT_MODAL = 'SET_DELETE_ALERT_MODAL',
     SET_NEW_TASK_MODAL = 'SET_NEW_TASK_MODAL',
+    SET_EDIT_TASK_MODAL = 'SET_EDIT_TASK_MODAL',
 }
 
 interface SetNewTeamModalAction {
@@ -25,4 +27,14 @@ interface SetNewTaskModalAction {
     value: boolean;
 }
 
-export type  ModalsAction = SetNewTeamModalAction | SetDeleteAlertModalAction | SetNewTaskModalAction
+
+interface SetEditTaskModalAction {
+    type: ModalsActionTypes.SET_EDIT_TASK_MODAL;
+    value: boolean;
+}
+
+export type  ModalsAction =
+    SetNewTeamModalAction
+    | SetDeleteAlertModalAction
+    | SetNewTaskModalAction
+    | SetEditTaskModalAction
