@@ -4,6 +4,7 @@ export interface TasksState {
     tasks: TasksResponse[];
     loading: boolean;
     error: null | string;
+    selected: TasksResponse
 }
 
 export enum TasksActionTypes {
@@ -12,7 +13,8 @@ export enum TasksActionTypes {
     FETCH_TASKS_ERROR = 'FETCH_TASKS_ERROR',
     ADD_TASK = 'ADD_TASK',
     REMOVE_TASK = 'REMOVE_TASK',
-    UPDATE_TASK = 'UPDATE_TASK'
+    UPDATE_TASK = 'UPDATE_TASK',
+    SET_SELECTED_TASK = 'SET_SELECTED_TASK'
 }
 
 interface FetchTasksAction {
@@ -44,6 +46,10 @@ interface UpdateTaskAction {
     value: TasksResponse;
 }
 
+interface SetSelectedTaskAction {
+    type: TasksActionTypes.SET_SELECTED_TASK;
+    value: TasksResponse;
+}
 
 export type  TasksAction =
     | FetchTasksAction
@@ -52,3 +58,4 @@ export type  TasksAction =
     | AddTaskAction
     | RemoveTaskAction
     | UpdateTaskAction
+    | SetSelectedTaskAction

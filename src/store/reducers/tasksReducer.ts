@@ -1,9 +1,11 @@
 import {TasksAction, TasksActionTypes, TasksState} from '../types/tasksTypes'
+import {TasksResponse} from '../../services/types/tasksResponse'
 
 const tasksState: TasksState = {
     tasks: [],
     loading: false,
-    error: null
+    error: null,
+    selected: {} as TasksResponse,
 }
 
 export const tasksReducer = (state = tasksState, action: TasksAction): TasksState => {
@@ -34,6 +36,10 @@ export const tasksReducer = (state = tasksState, action: TasksAction): TasksStat
                 ...state, loading: false, error: null,
                 tasks: [...newTasksObj]
             }
+
+        case TasksActionTypes.SET_SELECTED_TASK:
+            return {...state, selected: action.value}
+
         default:
             return state
     }
