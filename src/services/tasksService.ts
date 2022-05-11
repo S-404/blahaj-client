@@ -17,8 +17,12 @@ export default class TasksService {
         return _api.delete(`todos/tasks/${taskId}`)
     }
 
-    static updateTaskStatus({id,mode}:UpdateStatusPropsTypes): Promise<AxiosResponse<TasksResponse>> {
+    static updateTaskStatus({id, mode}: UpdateStatusPropsTypes): Promise<AxiosResponse<TasksResponse>> {
         return _api.put<TasksResponse>(`todos/tasks/${id}/status/${mode.toLocaleLowerCase()}`)
+    }
+
+    static updateTaskInfo(task: TasksResponse): Promise<AxiosResponse<TasksResponse>> {
+        return _api.put<TasksResponse>(`todos/tasks/info`, task)
     }
 
 }

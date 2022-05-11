@@ -3,6 +3,7 @@ import {createTask} from './createTask'
 import {removeTask} from './removeTask'
 import {updateTaskStatus} from './updateTaskStatus'
 import {setSelectedTask} from './setSelectedTask'
+import {updateTaskInfo} from './updateTaskInfo'
 
 
 export const tasksActions = {
@@ -11,4 +12,5 @@ export const tasksActions = {
     removeTask,
     updateTaskStatus,
     setSelectedTask,
+    updateTaskInfo,
 }
