@@ -20,12 +20,19 @@ export const tasksReducer = (state = tasksState, action: TasksAction): TasksStat
                 tasks: [...state.tasks, action.value]
             }
         case TasksActionTypes.REMOVE_TASK:
-            const newTasksArray = state
-                .tasks
-                .filter(task => task.id !== action.value)
+            const newTasksArray = state.tasks.filter(task => task.id !== action.value)
             return {
                 ...state, loading: false, error: null,
-                tasks: newTasksArray
+                tasks: [...newTasksArray]
+            }
+
+        case TasksActionTypes.UPDATE_TASK:
+            const newTasksObj = [...state.tasks]
+            const index = newTasksObj.findIndex(task => task.id === action.value.id)
+            newTasksObj[index] = {...action.value}
+            return {
+                ...state, loading: false, error: null,
+                tasks: [...newTasksObj]
             }
         default:
             return state
