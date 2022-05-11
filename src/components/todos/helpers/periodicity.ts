@@ -1,8 +1,6 @@
 import {MySelectOption} from '../../UI/types/mySelectTypes'
-import {PeriodicityTypes, IPeriodicityNames, IPeriodicityValues} from '../types/periodicityTypes'
-
-
-export const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+import {IPeriodicityNames, IPeriodicityValues, PeriodicityTypes} from '../types/periodicityTypes'
+import {pad, weekdays} from './utils'
 
 export const periodicity: PeriodicityTypes[] = [
     {
@@ -23,16 +21,12 @@ export const periodicity: PeriodicityTypes[] = [
 ]
 
 
-export function pad(num: number, places: number) {
-    return String(num).padStart(places, '0')
-}
-
 function deadlineValues(periodicityValue: number): MySelectOption[] {
 
     const resultArray = []
 
     switch (periodicityValue) {
-        case 1:
+        case IPeriodicityValues.DAILY:
             for (let hh = 0; hh <= 23; hh++) {
                 for (let mm = 0; mm <= 59; mm += 15) {
                     resultArray.push({
@@ -42,7 +36,7 @@ function deadlineValues(periodicityValue: number): MySelectOption[] {
                 }
             }
             break
-        case 7:
+        case IPeriodicityValues.WEEKLY:
             for (let wd = 0; wd < weekdays.length; wd++) {
                 resultArray.push({
                     name: weekdays[wd],
@@ -50,7 +44,7 @@ function deadlineValues(periodicityValue: number): MySelectOption[] {
                 })
             }
             break
-        case 30:
+        case IPeriodicityValues.MONTHLY:
             for (let d = 1; d <= 31; d++) {
                 resultArray.push({
                     name: `${d}`,
@@ -67,3 +61,4 @@ function deadlineValues(periodicityValue: number): MySelectOption[] {
     }
     return resultArray
 }
+

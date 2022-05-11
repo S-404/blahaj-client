@@ -1,36 +1,55 @@
-import React, {FC, useMemo, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import {FormGroup, Label} from 'reactstrap'
 import MySelect from '../../UI/MySelect'
 import {periodicity} from '../helpers/periodicity'
+import {IPeriodicityValue} from '../types/periodicityTypes'
+import {MySelectOption} from '../../UI/types/mySelectTypes'
 
-const DeadlineSelector: FC = () => {
+interface DeadlineSelectorProps {
+    defaultPeriodicity: IPeriodicityValue;
+    defaultDeadline: number;
+}
 
-    const [selectedPeriodicity, setSelectedPeriodicity] = useState<number>(1)
+const DeadlineSelector: FC<DeadlineSelectorProps> = ({defaultPeriodicity, defaultDeadline}) => {
 
-    const periodicityValues = useMemo(() => periodicity, [])
+    const [selectedPeriodicity, setSelectedPeriodicity] = useState<IPeriodicityValue>(1)
+    const [selectedDeadline, setSelectedDeadline] = useState<number>(1)
+    const [deadlinesValues, setDeadlinesValues] = useState<MySelectOption[]>([])
 
-    const deadlinesValues = useMemo(() => {
 
-        const index = periodicityValues
-            .findIndex(value => value.value === selectedPeriodicity)
+    useEffect(()=>{
+        if(defaultPeriodicity){
+            setSelectedPeriodicity(defaultPeriodicity)
+            setSelectedDeadline(defaultDeadline)
+        }
+    },[defaultPeriodicity])
 
-        return periodicityValues[index].deadlineArr
-
+    useEffect(() => {
+        if (selectedPeriodicity) {
+            const index = periodicity
+                .findIndex(value => value.value === selectedPeriodicity)
+            setDeadlinesValues (periodicity[index].deadlineArr)
+        }
     }, [selectedPeriodicity])
 
 
-    const mySelectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const periodicitySelectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedPeriodicity(+e.target.value)
     }
 
+    const deadlineSelectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedDeadline(+e.target.value)
+    }
+
     return (
-        <div className='d-flex flex-row'>
+        <div className="d-flex flex-row">
             <FormGroup>
                 <Label>Periodicity</Label>
                 <MySelect
                     name="periodicity"
-                    options={periodicityValues}
-                    onChange={mySelectHandler}
+                    options={periodicity}
+                    value={selectedPeriodicity}
+                    onChange={periodicitySelectHandler}
                 />
             </FormGroup>
 
@@ -39,6 +58,8 @@ const DeadlineSelector: FC = () => {
                 <MySelect
                     name="deadline"
                     options={deadlinesValues}
+                    value={selectedDeadline}
+                    onChange={deadlineSelectHandler}
                 />
             </FormGroup>
         </div>

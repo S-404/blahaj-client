@@ -4,12 +4,13 @@ import {MySelectProps} from './types/mySelectTypes'
 
 
 
-const MySelect: FC<MySelectProps> = ({name, options,onChange}) => {
+const MySelect: FC<MySelectProps> = ({name, options,onChange,value}) => {
     return (
         <Input
             name={name}
             type="select"
             onChange={onChange}
+            value={value}
         >
             {options.map(option => (
                 <option

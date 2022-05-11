@@ -1,9 +1,11 @@
 import {TasksAction, TasksActionTypes, TasksState} from '../types/tasksTypes'
+import {TasksResponse} from '../../services/types/tasksResponse'
 
 const tasksState: TasksState = {
     tasks: [],
     loading: false,
-    error: null
+    error: null,
+    selected: {} as TasksResponse,
 }
 
 export const tasksReducer = (state = tasksState, action: TasksAction): TasksState => {
@@ -20,13 +22,24 @@ export const tasksReducer = (state = tasksState, action: TasksAction): TasksStat
                 tasks: [...state.tasks, action.value]
             }
         case TasksActionTypes.REMOVE_TASK:
-            const newTasksArray = state
-                .tasks
-                .filter(task => task.id !== action.value)
+            const newTasksArray = state.tasks.filter(task => task.id !== action.value)
             return {
                 ...state, loading: false, error: null,
-                tasks: newTasksArray
+                tasks: [...newTasksArray]
             }
+
+        case TasksActionTypes.UPDATE_TASK:
+            const newTasksObj = [...state.tasks]
+            const index = newTasksObj.findIndex(task => task.id === action.value.id)
+            newTasksObj[index] = {...action.value}
+            return {
+                ...state, loading: false, error: null,
+                tasks: [...newTasksObj]
+            }
+
+        case TasksActionTypes.SET_SELECTED_TASK:
+            return {...state, selected: action.value}
+
         default:
             return state
     }

@@ -3,6 +3,7 @@ import {useActions} from '../../../hooks/useActions'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import {Button, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap'
 import DeadlineSelector from './DeadlineSelector'
+import {IPeriodicityValues} from '../types/periodicityTypes'
 
 
 const NewTaskForm: FC = () => {
@@ -21,7 +22,7 @@ const NewTaskForm: FC = () => {
         const periodicity = data.get('periodicity') || 0
         const description = data.get('description') || ''
 
-        if(name){
+        if (name) {
             createTask({
                 teamId,
                 name: name.toString(),
@@ -50,7 +51,10 @@ const NewTaskForm: FC = () => {
                 <Input name={'taskGroup'}/>
             </FormGroup>
 
-            <DeadlineSelector/>
+            <DeadlineSelector
+            defaultDeadline={1}
+            defaultPeriodicity={IPeriodicityValues.DAILY}
+            />
 
             <FormGroup>
                 <Label>Description</Label>
@@ -60,7 +64,7 @@ const NewTaskForm: FC = () => {
                 />
             </FormGroup>
 
-            <Button type='submit' color="success">
+            <Button type="submit" color="success">
                 Apply
             </Button>
         </Form>
