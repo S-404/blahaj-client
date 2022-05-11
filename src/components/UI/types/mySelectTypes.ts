@@ -9,4 +9,5 @@ export interface MySelectProps {
     name: string;
     options: MySelectOption[];
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value?: number;
 }
