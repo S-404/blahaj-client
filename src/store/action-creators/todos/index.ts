@@ -4,6 +4,7 @@ import {removeTask} from './removeTask'
 import {updateTaskStatus} from './updateTaskStatus'
 import {setSelectedTask} from './setSelectedTask'
 import {updateTaskInfo} from './updateTaskInfo'
+import {createHref} from './hrefs/createHref'
 
 
 export const tasksActions = {
@@ -13,4 +14,5 @@ export const tasksActions = {
     updateTaskStatus,
     setSelectedTask,
     updateTaskInfo,
+    createHref
 }

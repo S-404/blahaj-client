@@ -1,7 +1,8 @@
 import React, {FC, useEffect} from 'react'
-import {useTypedSelector} from '../../hooks/useTypedSelector'
-import TaskListItem from './TaskListItem'
-import {useActions} from '../../hooks/useActions'
+import {useTypedSelector} from '../../../hooks/useTypedSelector'
+import TaskListItem from './taskListItem/TaskListItem'
+import {useActions} from '../../../hooks/useActions'
+import {ListGroup} from 'reactstrap'
 
 const TaskList: FC = () => {
 
@@ -17,11 +18,11 @@ const TaskList: FC = () => {
 
 
     return (
-        <div>
+        <ListGroup>
             {tasks.map(task => (
                 <TaskListItem key={task.id} {...task}/>
             ))}
-        </div>
+        </ListGroup>
     )
 }
 

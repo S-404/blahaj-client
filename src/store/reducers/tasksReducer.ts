@@ -21,25 +21,33 @@ export const tasksReducer = (state = tasksState, action: TasksAction): TasksStat
                 ...state, loading: false, error: null,
                 tasks: [...state.tasks, action.value]
             }
-        case TasksActionTypes.REMOVE_TASK:
+        case TasksActionTypes.REMOVE_TASK: {
             const newTasksArray = state.tasks.filter(task => task.id !== action.value)
             return {
                 ...state, loading: false, error: null,
                 tasks: [...newTasksArray]
             }
-
-        case TasksActionTypes.UPDATE_TASK:
+        }
+        case TasksActionTypes.UPDATE_TASK: {
             const newTasksObj = [...state.tasks]
             const index = newTasksObj.findIndex(task => task.id === action.value.id)
-            newTasksObj[index] = {...action.value}
+            newTasksObj[index] = {...newTasksObj[index], ...action.value}
             return {
                 ...state, loading: false, error: null,
                 tasks: [...newTasksObj]
             }
-
+        }
         case TasksActionTypes.SET_SELECTED_TASK:
             return {...state, selected: action.value}
 
+        case TasksActionTypes.ADD_HREF: {
+            const index = state.tasks
+                .findIndex(task => task.id === action.value.taskId)
+            const newTasksObj = [...state.tasks]
+            newTasksObj[index].taskHrefs.push(action.value)
+
+            return {...state, tasks: [...newTasksObj]}
+        }
         default:
             return state
     }

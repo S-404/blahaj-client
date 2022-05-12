@@ -16,22 +16,20 @@ const NewTaskForm: FC = () => {
 
         const data = new FormData(event.currentTarget)
 
-        const name = data.get('taskName') || 'New Task'
-        const taskGroup = data.get('taskGroup') || 'New Tasks'
-        const deadline = data.get('deadline') || 1
-        const periodicity = data.get('periodicity') || 0
-        const description = data.get('description') || ''
+        const name = String(data.get('taskName') as FormDataEntryValue)
+        const taskGroup = String(data.get('taskGroup') as FormDataEntryValue)
+        const deadline = Number(data.get('deadline') as FormDataEntryValue)
+        const periodicity = Number(data.get('periodicity') as FormDataEntryValue)
+        const description = String(data.get('description') as FormDataEntryValue)
 
-        if (name) {
-            createTask({
-                teamId,
-                name: name.toString(),
-                taskGroup: taskGroup.toString(),
-                deadline: +deadline,
-                periodicity: +periodicity,
-                description: description.toString()
-            })
-        }
+        createTask({
+            teamId,
+            name,
+            taskGroup,
+            deadline,
+            periodicity,
+            description
+        })
 
     }
 
@@ -52,8 +50,8 @@ const NewTaskForm: FC = () => {
             </FormGroup>
 
             <DeadlineSelector
-            defaultDeadline={1}
-            defaultPeriodicity={IPeriodicityValues.DAILY}
+                defaultDeadline={0}
+                defaultPeriodicity={IPeriodicityValues.DAILY}
             />
 
             <FormGroup>
