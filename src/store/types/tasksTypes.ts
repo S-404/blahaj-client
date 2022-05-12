@@ -1,4 +1,5 @@
 import {TasksResponse} from '../../services/types/tasksResponse'
+import {TaskHrefsResponse} from '../../services/types/taskHrefsResponse'
 
 export interface TasksState {
     tasks: TasksResponse[];
@@ -14,7 +15,8 @@ export enum TasksActionTypes {
     ADD_TASK = 'ADD_TASK',
     REMOVE_TASK = 'REMOVE_TASK',
     UPDATE_TASK = 'UPDATE_TASK',
-    SET_SELECTED_TASK = 'SET_SELECTED_TASK'
+    SET_SELECTED_TASK = 'SET_SELECTED_TASK',
+    ADD_HREF = 'ADD_HREF'
 }
 
 interface FetchTasksAction {
@@ -51,6 +53,11 @@ interface SetSelectedTaskAction {
     value: TasksResponse;
 }
 
+interface AddHrefAction {
+    type: TasksActionTypes.ADD_HREF;
+    value: TaskHrefsResponse;
+}
+
 export type  TasksAction =
     | FetchTasksAction
     | FetchTasksSuccessAction
@@ -59,3 +66,4 @@ export type  TasksAction =
     | RemoveTaskAction
     | UpdateTaskAction
     | SetSelectedTaskAction
+    | AddHrefAction

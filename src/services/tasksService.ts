@@ -1,6 +1,7 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
 import {ITask, TasksResponse, UpdateStatusPropsTypes} from './types/tasksResponse'
+import {NewTaskHrefProps, TaskHrefsResponse} from './types/taskHrefsResponse'
 
 
 export default class TasksService {
@@ -23,6 +24,10 @@ export default class TasksService {
 
     static updateTaskInfo(task: TasksResponse): Promise<AxiosResponse<TasksResponse>> {
         return _api.put<TasksResponse>(`todos/tasks/info`, task)
+    }
+
+    static createTaskHref(href: NewTaskHrefProps): Promise<AxiosResponse<TaskHrefsResponse>> {
+        return _api.post<TaskHrefsResponse>(`todos/hrefs`, href)
     }
 
 }
