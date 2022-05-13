@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import {ListGroup} from 'reactstrap'
 import TaskHrefsListItem from './TaskHrefsListItem'
-import {TaskHrefsPropsTypes} from '../../types/taskHrefsTypes'
+import {TaskHrefsPropsTypes} from '../types/taskHrefsTypes'
 
 const TaskHrefsList:FC<TaskHrefsPropsTypes> = ({hrefs}) => {
 

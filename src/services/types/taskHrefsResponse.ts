@@ -10,6 +10,6 @@ export interface TaskHrefsResponse extends ITaskHref{
     id: number;
 }
 
-export interface NewTaskHrefProps extends ITaskHref {
+export interface TaskHrefResponseProps extends ITaskHref {
     teamId: number;
 }

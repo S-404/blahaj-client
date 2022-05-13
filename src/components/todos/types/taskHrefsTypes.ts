@@ -1,9 +1,9 @@
-import {ITaskHrefs} from '../../../services/types/tasksResponse'
+import {ITaskHref} from '../../../services/types/tasksResponse'
 
 export interface TaskHrefsPropsTypes {
-    hrefs: ITaskHrefs[]
+    hrefs: ITaskHref[]
 }
 
 export interface TaskHrefPropsTypes {
-    href: ITaskHrefs
+    href: ITaskHref
 }

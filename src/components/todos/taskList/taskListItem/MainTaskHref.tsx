@@ -1,17 +1,18 @@
 import React, {FC, useMemo} from 'react'
-import {ITaskHrefs} from '../../../../services/types/tasksResponse'
+import {ITaskHref, TasksResponse} from '../../../../services/types/tasksResponse'
 import {Button, Tooltip} from 'reactstrap'
-import {TaskHrefsPropsTypes} from '../../types/taskHrefsTypes'
 
-const MainTaskHref: FC<TaskHrefsPropsTypes> = ({hrefs}) => {
+const MainTaskHref: FC<TasksResponse> = ({...task}) => {
 
-    const mainHref: ITaskHrefs = useMemo(() => {
-        if (hrefs?.length) {
-            const index = hrefs.findIndex(href => href.isMain)
-            return hrefs[index]
+    const mainHref: ITaskHref = useMemo(() => {
+        if (task.taskHrefs?.length) {
+
+            const index = task.taskHrefs.findIndex(href => href.isMain)
+            return task.taskHrefs[index]
         }
-        return {} as ITaskHrefs
-    }, [hrefs])
+        return {} as ITaskHref
+    }, [task.taskHrefs, task.taskHrefs.length])
+
 
     if (!mainHref?.isMain) return null
 

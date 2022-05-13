@@ -37,7 +37,7 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                 <Badge>{taskStatus.statusText}</Badge>
             </div>
 
-            <MainTaskHref hrefs={task.taskHrefs}/>
+            <MainTaskHref {...task}/>
 
             <div>
                 <Button

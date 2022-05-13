@@ -18,14 +18,17 @@ export interface TasksResponse extends ITask {
     finishedAt: Date;
     createdAt: Date;
     updatedAt: Date;
-    taskHrefs: ITaskHrefs[];
+    taskHrefs: ITaskHref[];
 }
 
-export interface ITaskHrefs {
-    id: number;
+export interface ITaskHrefValues {
     href: string;
     isMain: boolean;
     shortName: string;
+}
+
+export interface ITaskHref extends ITaskHrefValues{
+    id: number;
 }
 
 

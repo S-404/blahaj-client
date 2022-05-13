@@ -1,5 +1,5 @@
-import {combineReducers} from "redux"
-import {isAuthReducer} from "./authReducer"
+import {combineReducers} from 'redux'
+import {isAuthReducer} from './authReducer'
 import {navReducer} from './navReducer'
 import {teamsReducer} from './teamsReducer'
 import {userParticipationReducer} from './userParticipationReducer'

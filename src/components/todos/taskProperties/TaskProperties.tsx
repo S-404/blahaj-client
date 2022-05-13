@@ -4,13 +4,13 @@ import {TasksResponse} from '../../../services/types/tasksResponse'
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap'
 import DeadlineSelector from '../newTaskForm/DeadlineSelector'
 import {useActions} from '../../../hooks/useActions'
-import TaskHrefs from './taskHrefs/TaskHrefs'
+import TaskHrefs from '../taskHrefs/TaskHrefs'
 
 const TaskProperties: FC = () => {
 
     const {updateTaskInfo, setEditTaskModal, removeTask} = useActions()
-    const {selected} = useTypedSelector(state => state.tasks)
-    const [task, setTask] = useState<TasksResponse>(selected)
+    const {selectedTask} = useTypedSelector(state => state.tasks)
+    const [task, setTask] = useState<TasksResponse>(selectedTask)
 
     const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTask({...task, name: e.target.value})
