@@ -9,7 +9,7 @@ import {IPeriodicityValues} from '../types/periodicityTypes'
 const NewTaskForm: FC = () => {
 
     const {id: teamId} = useTypedSelector(state => state.nav.selectedTeam)
-    const {createTask} = useActions()
+    const {createTask, setNewTaskModal} = useActions()
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -30,6 +30,8 @@ const NewTaskForm: FC = () => {
             periodicity,
             description
         })
+
+        setNewTaskModal(false)
 
     }
 
