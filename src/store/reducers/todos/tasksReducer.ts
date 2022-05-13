@@ -1,5 +1,5 @@
-import {TasksAction, TasksActionTypes, TasksState} from '../types/tasksTypes'
-import {ITaskHref, TasksResponse} from '../../services/types/tasksResponse'
+import {TasksAction, TasksActionTypes, TasksState} from '../../types/tasksTypes'
+import {ITaskHref, TasksResponse} from '../../../services/types/tasksResponse'
 
 const tasksState: TasksState = {
     tasks: [],

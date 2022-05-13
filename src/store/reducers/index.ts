@@ -4,7 +4,7 @@ import {navReducer} from './navReducer'
 import {teamsReducer} from './teamsReducer'
 import {userParticipationReducer} from './userParticipationReducer'
 import {modalsReducer} from './modalsReducer'
-import {tasksReducer} from './tasksReducer'
+import {tasksReducer} from './todos/tasksReducer'
 
 
 export const rootReducer = combineReducers({
