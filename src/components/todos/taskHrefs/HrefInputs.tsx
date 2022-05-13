@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from 'react'
 import {FormGroup, Input, Label} from 'reactstrap'
-import {ITaskHrefValues} from '../../../services/types/tasksResponse'
+import {ITaskHrefValues} from '../../../services/types/taskHrefsResponse'
 
 
 const HrefInputs: FC<ITaskHrefValues> = (defaultValues) => {

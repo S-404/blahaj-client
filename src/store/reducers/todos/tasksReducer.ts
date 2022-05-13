@@ -1,12 +1,13 @@
 import {TasksAction, TasksActionTypes, TasksState} from '../../types/tasksTypes'
-import {ITaskHref, TasksResponse} from '../../../services/types/tasksResponse'
+import {TasksResponse} from '../../../services/types/tasksResponse'
+import {TaskHrefResponseProps} from '../../../services/types/taskHrefsResponse'
 
 const tasksState: TasksState = {
     tasks: [],
     loading: false,
     error: null,
     selectedTask: {} as TasksResponse,
-    selectedTaskHref: {} as ITaskHref
+    selectedTaskHref: {} as TaskHrefResponseProps
 }
 
 export const tasksReducer = (state = tasksState, action: TasksAction): TasksState => {

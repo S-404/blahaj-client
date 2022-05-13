@@ -1,8 +1,8 @@
 import {Dispatch} from 'redux'
-import {ITaskHref} from '../../../../services/types/tasksResponse'
 import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {TaskHrefsResponse} from '../../../../services/types/taskHrefsResponse'
 
-export const setSelectedHref = (value: ITaskHref) => {
+export const setSelectedHref = (value: TaskHrefsResponse) => {
     return (dispatch: Dispatch<TasksAction>) => {
         dispatch({type: TasksActionTypes.SET_SELECTED_HREF, value})
     }

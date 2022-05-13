@@ -1,4 +1,5 @@
 import {StatusAction} from '../../components/todos/types/statusTypes'
+import {TaskHrefsResponse} from './taskHrefsResponse'
 
 export interface ITask {
     id?: number;
@@ -18,17 +19,7 @@ export interface TasksResponse extends ITask {
     finishedAt: Date;
     createdAt: Date;
     updatedAt: Date;
-    taskHrefs: ITaskHref[];
-}
-
-export interface ITaskHrefValues {
-    href: string;
-    isMain: boolean;
-    shortName: string;
-}
-
-export interface ITaskHref extends ITaskHrefValues{
-    id: number;
+    taskHrefs: TaskHrefsResponse[];
 }
 
 

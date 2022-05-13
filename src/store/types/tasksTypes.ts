@@ -1,5 +1,5 @@
-import {ITaskHref, TasksResponse} from '../../services/types/tasksResponse'
-import {TaskHrefsResponse} from '../../services/types/taskHrefsResponse'
+import {TasksResponse} from '../../services/types/tasksResponse'
+import {ITaskHref, TaskHrefsResponse} from '../../services/types/taskHrefsResponse'
 
 export interface TasksState {
     tasks: TasksResponse[];

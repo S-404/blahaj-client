@@ -1,10 +1,10 @@
 import React, {FC} from 'react'
 import {Badge, Button, ListGroupItem} from 'reactstrap'
-import {TaskHrefPropsTypes} from '../types/taskHrefsTypes'
 import {useActions} from '../../../hooks/useActions'
+import {TaskHrefsResponse} from '../../../services/types/taskHrefsResponse'
 
 
-const TaskHrefsListItem: FC<TaskHrefPropsTypes> = ({href}) => {
+const TaskHrefsListItem: FC<TaskHrefsResponse> = ({...href}) => {
 
     const {deleteHref, setSelectedHref, setEditTaskHrefModal} = useActions()
 
