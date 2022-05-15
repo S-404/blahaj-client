@@ -13,7 +13,7 @@ const TaskListItem: FC<TasksResponse> = (task) => {
     const {updateTaskStatus, setEditTaskModal, setSelectedTask} = useActions()
 
     const taskStatus: ITaskStatus = useMemo(() => {
-        return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt)
+        return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt, task.deadline)
     }, [task.updatedAt])
 
 
