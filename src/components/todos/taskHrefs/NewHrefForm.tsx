@@ -14,14 +14,13 @@ const NewHrefForm: FC = () => {
         event.preventDefault()
         event.stopPropagation()
 
-        const {href, shortName, isMain} = taskHrefFormDataEntryValues(event)
+        const {href, shortName} = taskHrefFormDataEntryValues(event)
 
         createHref({
             teamId: selectedTask.teamId,
             taskId: selectedTask.id,
             href,
-            shortName,
-            isMain,
+            shortName
         })
 
         setNewTaskHrefModal(false)
@@ -36,7 +35,6 @@ const NewHrefForm: FC = () => {
         >
             <HrefInputs
                 href={''}
-                isMain={false}
                 shortName={''}
             />
 

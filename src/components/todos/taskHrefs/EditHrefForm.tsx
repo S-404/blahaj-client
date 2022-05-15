@@ -14,7 +14,7 @@ const EditHrefForm: FC = () => {
         event.preventDefault()
         event.stopPropagation()
 
-        const {href, shortName, isMain} = taskHrefFormDataEntryValues(event)
+        const {href, shortName} = taskHrefFormDataEntryValues(event)
 
         updateHref({
             id: selectedTaskHref.id,
@@ -22,7 +22,6 @@ const EditHrefForm: FC = () => {
             taskId: selectedTask.id,
             href,
             shortName,
-            isMain,
         })
 
         setEditTaskHrefModal(false)

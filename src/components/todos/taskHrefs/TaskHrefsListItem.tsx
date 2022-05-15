@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import {Badge, Button, ListGroupItem} from 'reactstrap'
+import {Button, ListGroupItem} from 'reactstrap'
 import {useActions} from '../../../hooks/useActions'
 import {TaskHrefsResponse} from '../../../services/types/taskHrefsResponse'
 
@@ -29,8 +29,6 @@ const TaskHrefsListItem: FC<TaskHrefsResponse> = ({...href}) => {
                 target={'_blank'}
                 href={href.href}
             >{href.shortName}</Button>
-
-            {href.isMain ? <Badge>main</Badge> : null}
 
             <div className="float-end">
 

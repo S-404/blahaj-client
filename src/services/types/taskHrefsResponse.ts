@@ -1,6 +1,5 @@
 export interface ITaskHrefValues {
     href: string;
-    isMain: boolean;
     shortName: string;
 }
 
