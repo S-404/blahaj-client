@@ -1,16 +1,19 @@
 import React, {FC} from 'react'
-import {TasksResponse} from '../../../../services/types/tasksResponse'
 import {Badge, UncontrolledTooltip} from 'reactstrap'
 
+interface TaskNoteBadgePropsTypes {
+    id: number;
+    note: string;
+}
 
-const TaskNoteBadge: FC<TasksResponse> = (task) => {
+const TaskNoteBadge: FC<TaskNoteBadgePropsTypes> = ({note, id}) => {
 
-    if (!task.note) return null
+    if (!note) return null
 
     return (
         <div>
             <Badge
-                id={`taskNote${task.id}`}
+                id={`taskNote${id}`}
                 color="warning"
                 pill
             >
@@ -18,9 +21,9 @@ const TaskNoteBadge: FC<TasksResponse> = (task) => {
             </Badge>
             <UncontrolledTooltip
                 flip
-                target={`taskNote${task.id}`}
+                target={`taskNote${id}`}
             >
-                {task.note}
+                {note}
             </UncontrolledTooltip>
         </div>
 
