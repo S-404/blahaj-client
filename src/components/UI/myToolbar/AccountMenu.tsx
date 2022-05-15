@@ -1,12 +1,10 @@
-import React, {FC, useState} from 'react'
+import React, {FC} from 'react'
 import {useActions} from '../../../hooks/useActions'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import {Link as RouterLink} from 'react-router-dom'
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from 'reactstrap'
 
 const AccountMenu: FC = () => {
-
-    const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const {user} = useTypedSelector(state => state.auth)
     const {logout} = useActions()
@@ -15,15 +13,9 @@ const AccountMenu: FC = () => {
         logout()
     }
 
-    const toggleHandler = () => {
-        setIsOpen(prevState => !prevState)
-    }
 
     return (
-        <Dropdown
-            isOpen={isOpen}
-            toggle={toggleHandler}
-        >
+        <UncontrolledDropdown>
 
             <DropdownToggle
                 color={'primary'}
@@ -49,7 +41,7 @@ const AccountMenu: FC = () => {
 
             </DropdownMenu>
 
-        </Dropdown>
+        </UncontrolledDropdown>
 
     )
 }
