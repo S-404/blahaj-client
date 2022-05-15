@@ -17,7 +17,7 @@ const Tasks: FC = () => {
     }
 
     return (
-        <Container>
+        <Container className='col-md-6'>
 
             <MyModal
                 title={`New Task`}

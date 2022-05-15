@@ -1,12 +1,13 @@
 import React, {FC, useMemo} from 'react'
 import {TasksResponse} from '../../../../services/types/tasksResponse'
-import {Badge, Button, ListGroupItem} from 'reactstrap'
+import {Button, ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap'
 import TaskDeadline from './TaskDeadline'
 import {getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
 import TaskListItemHref from './TaskListItemHref'
 import TaskNoteBadge from './TaskNoteBadge'
+import TaskStatusBadge from './TaskStatusBadge'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
@@ -29,14 +30,26 @@ const TaskListItem: FC<TasksResponse> = (task) => {
     return (
         <ListGroupItem className="d-flex flex-row justify-content-between">
 
-            <div>
+            <ListGroupItemHeading>
                 <TaskDeadline
                     deadline={task.deadline}
                     periodicity={task.periodicity}
                 />
-                {task.name}
-                <Badge>{taskStatus.statusText}</Badge>
-                <TaskNoteBadge {...task}/>
+                <TaskStatusBadge
+                    statusText={taskStatus.statusText}
+                />
+            </ListGroupItemHeading>
+
+            <ListGroupItemText >
+                title={task.name}
+            </ListGroupItemText>
+            <div>
+
+                <TaskNoteBadge
+                    id={task.id}
+                    note={task.note}
+                />
+
             </div>
 
             <TaskListItemHref taskHrefs={task.taskHrefs}/>
