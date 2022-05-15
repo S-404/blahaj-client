@@ -14,7 +14,9 @@ const MyTeams: FC = () => {
     const {fetchUserParticipation} = useActions()
 
     useEffect(() => {
-        fetchUserParticipation()
+        if (!userParticipation.length) {
+            fetchUserParticipation()
+        }
     }, [])
 
 

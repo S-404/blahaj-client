@@ -1,15 +1,14 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TasksAction, TasksActionTypes} from '../../types/tasksTypes'
-import TasksService from '../../../services/tasksService'
-import {TasksResponse} from '../../../services/types/tasksResponse'
+import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import TasksService from '../../../../services/tasksService'
 
-export const updateTaskInfo = (task: TasksResponse) => {
+export const removeTask = (taskId: number) => {
     return async (dispatch: Dispatch<TasksAction>) => {
         try {
             dispatch({type: TasksActionTypes.FETCH_TASKS})
-            const response = await TasksService.updateTaskInfo(task)
-            dispatch({type: TasksActionTypes.UPDATE_TASK, value: response.data})
+            await TasksService.removeTask(taskId)
+            dispatch({type: TasksActionTypes.REMOVE_TASK, value: taskId})
         } catch (e) {
             let errMsg
             if (axios.isAxiosError(e)) {

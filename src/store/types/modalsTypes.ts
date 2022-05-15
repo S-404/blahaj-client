@@ -3,6 +3,8 @@ export interface ModalsState {
     deleteAlertModal: boolean;
     newTaskModal: boolean;
     editTaskModal: boolean;
+    newTaskHrefModal: boolean;
+    editTaskHrefModal: boolean;
 }
 
 export enum ModalsActionTypes {
@@ -10,6 +12,8 @@ export enum ModalsActionTypes {
     SET_DELETE_ALERT_MODAL = 'SET_DELETE_ALERT_MODAL',
     SET_NEW_TASK_MODAL = 'SET_NEW_TASK_MODAL',
     SET_EDIT_TASK_MODAL = 'SET_EDIT_TASK_MODAL',
+    SET_NEW_TASK_HREF_MODAL = 'SET_NEW_TASK_HREF_MODAL',
+    SET_EDIT_TASK_HREF_MODAL = 'SET_EDIT_TASK_HREF_MODAL',
 }
 
 interface SetNewTeamModalAction {
@@ -33,8 +37,22 @@ interface SetEditTaskModalAction {
     value: boolean;
 }
 
+
+interface SetNewTaskHrefModalAction {
+    type: ModalsActionTypes.SET_NEW_TASK_HREF_MODAL;
+    value: boolean;
+}
+
+interface SetEditTaskHrefModalAction {
+    type: ModalsActionTypes.SET_EDIT_TASK_HREF_MODAL;
+    value: boolean;
+}
+
+
 export type  ModalsAction =
     SetNewTeamModalAction
     | SetDeleteAlertModalAction
     | SetNewTaskModalAction
     | SetEditTaskModalAction
+    | SetNewTaskHrefModalAction
+    | SetEditTaskHrefModalAction

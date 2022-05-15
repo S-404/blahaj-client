@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TasksAction, TasksActionTypes} from '../../types/tasksTypes'
-import TasksService from '../../../services/tasksService'
+import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import TasksService from '../../../../services/tasksService'
 
 export const fetchTasks = (teamId: number) => {
     return async (dispatch: Dispatch<TasksAction>) => {

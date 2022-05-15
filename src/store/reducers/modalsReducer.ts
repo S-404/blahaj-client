@@ -5,6 +5,8 @@ const modalsState: ModalsState = {
     deleteAlertModal: false,
     newTaskModal: false,
     editTaskModal: false,
+    newTaskHrefModal: false,
+    editTaskHrefModal: false,
 }
 
 export const modalsReducer = (state = modalsState, action: ModalsAction): ModalsState => {
@@ -17,6 +19,10 @@ export const modalsReducer = (state = modalsState, action: ModalsAction): Modals
             return {...state, newTaskModal: action.value}
         case ModalsActionTypes.SET_EDIT_TASK_MODAL:
             return {...state, editTaskModal: action.value}
+        case ModalsActionTypes.SET_NEW_TASK_HREF_MODAL:
+            return {...state, newTaskHrefModal: action.value}
+        case ModalsActionTypes.SET_EDIT_TASK_HREF_MODAL:
+            return {...state, editTaskHrefModal: action.value}
         default:
             return state
     }

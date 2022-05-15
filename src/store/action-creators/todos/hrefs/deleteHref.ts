@@ -1,15 +1,14 @@
-import {TaskHrefResponseProps} from '../../../../services/types/taskHrefsResponse'
 import {Dispatch} from 'redux'
 import axios from 'axios'
 import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
 import TasksService from '../../../../services/tasksService'
 
-export const createHref = (newHref: TaskHrefResponseProps) => {
+export const deleteHref = (id: number) => {
     return async (dispatch: Dispatch<TasksAction>) => {
         try {
             dispatch({type: TasksActionTypes.FETCH_TASKS})
-            const response = await TasksService.createTaskHref(newHref)
-            dispatch({type: TasksActionTypes.ADD_HREF, value: response.data})
+            const response = await TasksService.deleteTaskHref(id)
+            dispatch({type: TasksActionTypes.DELETE_HREF, value: response.data})
         } catch (e) {
             let errMsg
             if (axios.isAxiosError(e)) {

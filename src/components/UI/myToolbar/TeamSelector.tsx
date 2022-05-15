@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import {useActions} from '../../../hooks/useActions'
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from 'reactstrap'
 
 const TeamSelector = () => {
-
-    const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const {selectedTeam} = useTypedSelector(state => state.nav)
     const {userParticipation} = useTypedSelector(state => state.participation)
@@ -36,14 +34,9 @@ const TeamSelector = () => {
         setSelectedTeam(selectedTeam)
     }
 
-    const toggleHandler = () => {
-        setIsOpen(prevState => !prevState)
-    }
 
     return (
-        <Dropdown
-            isOpen={isOpen}
-            toggle={toggleHandler}>
+        <UncontrolledDropdown>
 
             <DropdownToggle
                 caret
@@ -69,7 +62,7 @@ const TeamSelector = () => {
 
             </DropdownMenu>
 
-        </Dropdown>
+        </UncontrolledDropdown>
     )
 }
 

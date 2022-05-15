@@ -1,6 +1,7 @@
 import React, {FC} from 'react'
 import {getDeadlineValue} from '../../helpers/deadline'
 import {IPeriodicityValue} from '../../types/periodicityTypes'
+import {Container} from 'reactstrap'
 
 interface TaskDeadLineProps {
     deadline: number;
@@ -12,9 +13,9 @@ const TaskDeadline: FC<TaskDeadLineProps> = ({deadline, periodicity}) => {
     const deadlineValue = () => getDeadlineValue(deadline, periodicity)
 
     return (
-        <div>
+        <Container className='text-center'>
             {deadlineValue()}
-        </div>
+        </Container>
     )
 }
 

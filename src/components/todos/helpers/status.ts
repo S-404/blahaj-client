@@ -1,57 +1,72 @@
 import {IPeriodicityValues} from '../types/periodicityTypes'
 import {StatusAction, StatusActionsTextTypes, StatusText, StatusTextTypes} from '../types/statusTypes'
 
-export function defineStatus(periodicity: number, startedAt: Date, finishedAt: Date):StatusText {
+function dateWithOffset(date: Date) {
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset())
+    return date
+}
 
-    let today: Date = new Date()
-    today.setHours(0)
+export function defineStatus(
+    periodicity: number,
+    startedAt: Date,
+    finishedAt: Date,
+    deadline: number
+): StatusText {
 
-    const timeZoneOffset = today.getTimezoneOffset()
-
-    let started: Date = new Date(startedAt)
-    started.setMinutes(started.getMinutes() + timeZoneOffset)
-
-    let finished: Date = new Date(finishedAt)
-    finished.setMinutes(finished.getMinutes() + timeZoneOffset)
-
+    const checkDate: Date = new Date()
+    const started: Date = dateWithOffset(new Date(startedAt))
+    const finished: Date = dateWithOffset(new Date(finishedAt))
 
     switch (periodicity) {
         case IPeriodicityValues.DAILY:
-            return getStatusText(finished, started, today)
-
+            checkDate.setHours(0)
+            break
         case IPeriodicityValues.WEEKLY:
-            today.setDate(today.getDate() - today.getDay())
-            return getStatusText(finished, started, today)
-
+            checkDate.setDate(checkDate.getDate() - checkDate.getDay())
+            break
         case IPeriodicityValues.MONTHLY:
-            today.setDate(1)
-            return getStatusText(finished, started, today)
-
-        default:
-            return StatusTextTypes.NOT_STARTED
+            checkDate.setDate(1)
+            break
     }
-
-}
-
-
-export function getStatusText(finished: Date, started: Date, checkDate: Date):StatusText {
-
+    if (finished > started) {
+        return StatusTextTypes.FINISHED
+    }
     if (started > checkDate) {
-        if (finished > started) {
-            return StatusTextTypes.FINISHED
-        } else {
-            return StatusTextTypes.STARTED
-        }
-    } else {
-        return StatusTextTypes.NOT_STARTED
+        return StatusTextTypes.STARTED
     }
+    return checkDeadline(deadline, periodicity)
 }
 
-export function getActionText(status: StatusText):StatusAction {
+export const checkDeadline = (deadline: number, periodicity: number,): StatusText => {
+
+    const checkDate: Date = new Date()
+    const now: Date = new Date()
+
+    switch (periodicity) {
+        case IPeriodicityValues.DAILY:
+            checkDate.setHours(0)
+            checkDate.setMinutes(deadline)
+            const minutesDiff = (now.valueOf() - checkDate.valueOf()) / 1000 / 60
+            if (minutesDiff > 0) return StatusTextTypes.NOT_STARTED_MISSED
+            else if (minutesDiff > -60) return StatusTextTypes.NOT_STARTED_REQUIRED
+            break
+        case IPeriodicityValues.WEEKLY:
+            if (checkDate.getDay() > deadline) return StatusTextTypes.NOT_STARTED_MISSED
+            else if (checkDate.getDay() === deadline) return StatusTextTypes.NOT_STARTED_REQUIRED
+            break
+        case IPeriodicityValues.MONTHLY:
+            if (checkDate.getDate() > deadline) return StatusTextTypes.NOT_STARTED_MISSED
+            else if (checkDate.getDate() === deadline) return StatusTextTypes.NOT_STARTED_REQUIRED
+            break
+    }
+
+    return StatusTextTypes.NOT_STARTED_NOT_REQUIRED
+}
+
+
+export function getActionText(status: StatusText): StatusAction {
 
     switch (status) {
-        case StatusTextTypes.NOT_STARTED:
-            return StatusActionsTextTypes.START
         case StatusTextTypes.STARTED:
             return StatusActionsTextTypes.FINISH
         case StatusTextTypes.FINISHED:
@@ -61,8 +76,8 @@ export function getActionText(status: StatusText):StatusAction {
     }
 }
 
-export function getTaskStatus(periodicity: number, startedAt: Date, finishedAt: Date) {
-    const statusText = defineStatus(periodicity, startedAt, finishedAt)
+export function getTaskStatus(periodicity: number, startedAt: Date, finishedAt: Date, deadline: number) {
+    const statusText = defineStatus(periodicity, startedAt, finishedAt, deadline)
     const actionText = getActionText(statusText)
     return {statusText, actionText}
 }

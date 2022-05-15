@@ -1,18 +1,20 @@
 import React, {FC, useMemo} from 'react'
 import {TasksResponse} from '../../../../services/types/tasksResponse'
-import {Badge, Button, ListGroupItem} from 'reactstrap'
+import {Button, ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap'
 import TaskDeadline from './TaskDeadline'
 import {getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
-import MainTaskHref from './MainTaskHref'
+import TaskListItemHref from './TaskListItemHref'
+import TaskNoteBadge from './TaskNoteBadge'
+import TaskStatusBadge from './TaskStatusBadge'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
-    const {updateTaskStatus, setEditTaskModal,setSelectedTask} = useActions()
+    const {updateTaskStatus, setEditTaskModal, setSelectedTask} = useActions()
 
     const taskStatus: ITaskStatus = useMemo(() => {
-        return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt)
+        return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt, task.deadline)
     }, [task.updatedAt])
 
 
@@ -28,16 +30,29 @@ const TaskListItem: FC<TasksResponse> = (task) => {
     return (
         <ListGroupItem className="d-flex flex-row justify-content-between">
 
-            <div>
+            <ListGroupItemHeading>
                 <TaskDeadline
                     deadline={task.deadline}
                     periodicity={task.periodicity}
                 />
-                {task.name}
-                <Badge>{taskStatus.statusText}</Badge>
+                <TaskStatusBadge
+                    statusText={taskStatus.statusText}
+                />
+            </ListGroupItemHeading>
+
+            <ListGroupItemText >
+                title={task.name}
+            </ListGroupItemText>
+            <div>
+
+                <TaskNoteBadge
+                    id={task.id}
+                    note={task.note}
+                />
+
             </div>
 
-            <MainTaskHref hrefs={task.taskHrefs}/>
+            <TaskListItemHref taskHrefs={task.taskHrefs}/>
 
             <div>
                 <Button

@@ -12,9 +12,8 @@ const TaskList: FC = () => {
     const {fetchTasks} = useActions()
 
     useEffect(()=>{
-
         fetchTasks(selectedTeam.id)
-    },[selectedTeam])
+    },[selectedTeam.id])
 
 
     return (
