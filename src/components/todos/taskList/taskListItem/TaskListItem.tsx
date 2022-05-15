@@ -5,11 +5,11 @@ import TaskDeadline from './TaskDeadline'
 import {getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
-import MainTaskHref from './MainTaskHref'
+import TaskListItemHref from './TaskListItemHref'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
-    const {updateTaskStatus, setEditTaskModal,setSelectedTask} = useActions()
+    const {updateTaskStatus, setEditTaskModal, setSelectedTask} = useActions()
 
     const taskStatus: ITaskStatus = useMemo(() => {
         return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt)
@@ -35,9 +35,10 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                 />
                 {task.name}
                 <Badge>{taskStatus.statusText}</Badge>
+
             </div>
 
-            <MainTaskHref {...task}/>
+            <TaskListItemHref taskHrefs={task.taskHrefs}/>
 
             <div>
                 <Button
