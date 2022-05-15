@@ -6,6 +6,7 @@ import {getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
 import TaskListItemHref from './TaskListItemHref'
+import TaskNoteBadge from './TaskNoteBadge'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
@@ -35,7 +36,7 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                 />
                 {task.name}
                 <Badge>{taskStatus.statusText}</Badge>
-
+                <TaskNoteBadge {...task}/>
             </div>
 
             <TaskListItemHref taskHrefs={task.taskHrefs}/>
