@@ -9,7 +9,7 @@ import EditHrefForm from './EditHrefForm'
 
 
 const TaskHrefs: FC = () => {
-    const {selectedTask} = useTypedSelector(state => state.tasks)
+    const {selectedTask} = useTypedSelector(state => state.selectedTask)
     const {newTaskHrefModal, editTaskHrefModal} = useTypedSelector(state => state.modals)
     const {setNewTaskHrefModal, setEditTaskHrefModal} = useActions()
 
