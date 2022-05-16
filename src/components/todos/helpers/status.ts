@@ -81,3 +81,29 @@ export function getTaskStatus(periodicity: number, startedAt: Date, finishedAt: 
     const actionText = getActionText(statusText)
     return {statusText, actionText}
 }
+
+export const defineStatusBadgeColor = (statusText: StatusText) => {
+    switch (statusText) {
+        case StatusTextTypes.STARTED:
+            return 'primary'
+        case StatusTextTypes.FINISHED:
+            return 'success'
+        case StatusTextTypes.NOT_STARTED_MISSED:
+            return 'danger'
+        case StatusTextTypes.NOT_STARTED_REQUIRED:
+            return 'warning'
+        default:
+            return 'light'
+    }
+}
+
+export const defineActionButtonColor = (statusText: StatusText) => {
+    switch (statusText) {
+        case StatusTextTypes.STARTED:
+            return 'success'
+        case StatusTextTypes.FINISHED:
+            return 'secondary'
+        default:
+            return 'primary'
+    }
+}
