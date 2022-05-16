@@ -1,12 +1,9 @@
 import {IPeriodicityValues} from '../types/periodicityTypes'
 import {StatusAction, StatusActionsTextTypes, StatusText, StatusTextTypes} from '../types/statusTypes'
+import {dateWithOffset} from './utils'
 
-function dateWithOffset(date: Date) {
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset())
-    return date
-}
 
-export function defineStatus(
+function defineStatus(
     periodicity: number,
     startedAt: Date,
     finishedAt: Date,
@@ -14,12 +11,15 @@ export function defineStatus(
 ): StatusText {
 
     const checkDate: Date = new Date()
+    checkDate.setHours(0)
+    checkDate.setMinutes(0)
+
     const started: Date = dateWithOffset(new Date(startedAt))
     const finished: Date = dateWithOffset(new Date(finishedAt))
 
+
     switch (periodicity) {
         case IPeriodicityValues.DAILY:
-            checkDate.setHours(0)
             break
         case IPeriodicityValues.WEEKLY:
             checkDate.setDate(checkDate.getDate() - checkDate.getDay())
@@ -28,16 +28,16 @@ export function defineStatus(
             checkDate.setDate(1)
             break
     }
-    if (finished > started) {
-        return StatusTextTypes.FINISHED
-    }
+
     if (started > checkDate) {
+        if (finished > started) return StatusTextTypes.FINISHED
         return StatusTextTypes.STARTED
     }
+
     return checkDeadline(deadline, periodicity)
 }
 
-export const checkDeadline = (deadline: number, periodicity: number,): StatusText => {
+function checkDeadline(deadline: number, periodicity: number,): StatusText {
 
     const checkDate: Date = new Date()
     const now: Date = new Date()
@@ -64,7 +64,7 @@ export const checkDeadline = (deadline: number, periodicity: number,): StatusTex
 }
 
 
-export function getActionText(status: StatusText): StatusAction {
+function getActionText(status: StatusText): StatusAction {
 
     switch (status) {
         case StatusTextTypes.STARTED:
