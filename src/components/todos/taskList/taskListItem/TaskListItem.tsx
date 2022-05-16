@@ -7,6 +7,7 @@ import {useActions} from '../../../../hooks/useActions'
 import TaskListItemHref from './TaskListItemHref'
 import TaskNoteBadge from './TaskNoteBadge'
 import {getDeadlineValue} from '../../helpers/deadline'
+import './taskListItem.css'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
