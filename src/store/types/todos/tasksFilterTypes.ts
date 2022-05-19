@@ -1,4 +1,4 @@
-import {StatusText} from '../../components/todos/types/statusTypes'
+import {StatusText} from '../../../components/todos/types/statusTypes'
 
 export interface TasksFiltersState {
     taskGroup: string;

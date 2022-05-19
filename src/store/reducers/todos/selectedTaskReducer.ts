@@ -1,7 +1,7 @@
-import {SelectedTaskAction, SelectedTaskActionTypes, SelectedTaskState} from '../../types/selectedTaskTypes'
+import {SelectedTaskAction, SelectedTaskActionTypes, SelectedTaskState} from '../../types/todos/selectedTaskTypes'
 import {TasksResponse} from '../../../services/types/tasksResponse'
 import {ITaskHref} from '../../../services/types/taskHrefsResponse'
-import {TaskHrefActionTypes} from '../../types/tasksTypes'
+import {TaskHrefActionTypes} from '../../types/todos/tasksTypes'
 
 
 const selectedTaskState: SelectedTaskState = {

@@ -1,4 +1,4 @@
-import {TaskHrefActionTypes, TasksAction, TasksActionTypes, TasksState} from '../../types/tasksTypes'
+import {TaskHrefActionTypes, TasksAction, TasksActionTypes, TasksState} from '../../types/todos/tasksTypes'
 import {TasksResponse} from '../../../services/types/tasksResponse'
 
 const tasksState: TasksState = {

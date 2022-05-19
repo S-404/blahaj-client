@@ -3,7 +3,7 @@ import {
     TaskFiltersAction,
     TasksFiltersActionTypes,
     TasksFiltersState
-} from '../../types/tasksFilterTypes'
+} from '../../types/todos/tasksFilterTypes'
 
 const tasksFiltersState: TasksFiltersState = {
     taskGroup: '',

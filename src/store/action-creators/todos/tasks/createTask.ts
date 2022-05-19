@@ -1,6 +1,6 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {TasksAction, TasksActionTypes} from '../../../types/todos/tasksTypes'
 import TasksService from '../../../../services/tasksService'
 import {ITask} from '../../../../services/types/tasksResponse'
 

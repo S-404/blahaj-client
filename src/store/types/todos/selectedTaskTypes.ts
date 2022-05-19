@@ -1,5 +1,5 @@
-import {ITaskHref} from '../../services/types/taskHrefsResponse'
-import {TasksResponse} from '../../services/types/tasksResponse'
+import {ITaskHref} from '../../../services/types/taskHrefsResponse'
+import {TasksResponse} from '../../../services/types/tasksResponse'
 import {AddHrefAction, DeleteHrefAction, UpdateHrefAction} from './tasksTypes'
 
 export interface SelectedTaskState {

@@ -1,5 +1,5 @@
 import {Dispatch} from 'redux'
-import {TaskFiltersAction, TasksFiltersActionTypes} from '../../../types/tasksFilterTypes'
+import {TaskFiltersAction, TasksFiltersActionTypes} from '../../../types/todos/tasksFilterTypes'
 
 export const setTaskGroupFilter = (value: string) => {
     return (dispatch: Dispatch<TaskFiltersAction>) => {

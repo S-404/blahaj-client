@@ -1,6 +1,6 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TaskHrefActionTypes, TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {TaskHrefActionTypes, TasksAction, TasksActionTypes} from '../../../types/todos/tasksTypes'
 import TasksService from '../../../../services/tasksService'
 
 export const deleteHref = (id: number) => {
