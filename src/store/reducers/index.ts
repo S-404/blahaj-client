@@ -7,6 +7,7 @@ import {modalsReducer} from './modalsReducer'
 import {tasksReducer} from './todos/tasksReducer'
 import {selectedTaskReducer} from './todos/selectedTaskReducer'
 import {tasksFilterReducer} from './todos/tasksFilterReducer'
+import {tasksSortReducer} from './todos/tasksSortReducer'
 
 
 export const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ export const rootReducer = combineReducers({
     tasks: tasksReducer,
     selectedTask: selectedTaskReducer,
     tasksFilter: tasksFilterReducer,
+    tasksSort: tasksSortReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

@@ -10,6 +10,7 @@ import {updateHref} from './hrefs/updateHref'
 import {setSelectedHref} from './hrefs/setSelectedHref'
 import {setTaskGroupFilter} from './filter-sort/setTaskGroupFilter'
 import {setStatusFilter} from './filter-sort/setStatusFilter'
+import {setTasksSort} from './filter-sort/setTasksSort'
 
 
 export const tasksActions = {
@@ -25,4 +26,5 @@ export const tasksActions = {
     setSelectedHref,
     setTaskGroupFilter,
     setStatusFilter,
+    setTasksSort
 }
