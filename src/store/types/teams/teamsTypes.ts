@@ -1,4 +1,4 @@
-import {ITeam} from '../../services/types/teamsResponse'
+import {ITeam} from '../../../services/types/teamsResponse'
 
 export interface TeamsState {
     teams: ITeam[];

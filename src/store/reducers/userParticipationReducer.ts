@@ -2,7 +2,7 @@ import {
     UserParticipationAction,
     UserParticipationActionTypes,
     UserParticipationState
-} from '../types/userParticipationTypes'
+} from '../types/teams/userParticipationTypes'
 
 const userParticipationState: UserParticipationState = {
     userParticipation: [],
