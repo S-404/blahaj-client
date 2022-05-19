@@ -6,6 +6,7 @@ import {userParticipationReducer} from './userParticipationReducer'
 import {modalsReducer} from './modalsReducer'
 import {tasksReducer} from './todos/tasksReducer'
 import {selectedTaskReducer} from './todos/selectedTaskReducer'
+import {tasksFilterReducer} from './todos/tasksFilterReducer'
 
 
 export const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ export const rootReducer = combineReducers({
     participation: userParticipationReducer,
     modals: modalsReducer,
     tasks: tasksReducer,
-    selectedTask:selectedTaskReducer
+    selectedTask: selectedTaskReducer,
+    tasksFilter: tasksFilterReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
