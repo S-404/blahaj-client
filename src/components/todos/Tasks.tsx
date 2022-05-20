@@ -6,6 +6,7 @@ import {Button,Container} from 'reactstrap'
 import MyModal from '../UI/MyModal'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import TaskProperties from './taskProperties/TaskProperties'
+import TaskListHeader from './taskListHeader/TaskListHeader'
 
 const Tasks: FC = () => {
 
@@ -32,6 +33,8 @@ const Tasks: FC = () => {
                 visible={editTaskModal}
                 children={<TaskProperties/>}
             />
+
+            <TaskListHeader/>
 
             <Button onClick={addTaskButtonHandler}>
                 Add task
