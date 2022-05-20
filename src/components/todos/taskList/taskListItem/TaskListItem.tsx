@@ -35,13 +35,7 @@ const TaskListItem: FC<TasksResponse> = (task) => {
         >
 
             <div className="d-flex flex-column col-2">
-
                 <b> {getDeadlineValue(task.deadline, task.periodicity)}</b>
-                <Badge
-                    color={defineStatusBadgeColor(taskStatus.statusText)}
-                >
-                    {taskStatus.statusText}
-                </Badge>
             </div>
 
             <ListGroupItemHeading>
@@ -56,12 +50,18 @@ const TaskListItem: FC<TasksResponse> = (task) => {
 
             </div>
 
+            <div className='task-list-item__status-badge'>
+                <Badge color={defineStatusBadgeColor(taskStatus.statusText)}>
+                    {taskStatus.statusText}
+                </Badge>
+            </div>
 
             <div className="task-list-item__action-buttons">
                 <TaskListItemHref taskHrefs={task.taskHrefs}/>
                 <div>
 
                     <Button
+                        outline
                         size="sm"
                         onClick={propsButtonHandler}
                     >
@@ -69,6 +69,7 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                     </Button>
 
                     <Button
+                        outline
                         size="sm"
                         onClick={actionButtonHandler}
                         color={defineActionButtonColor(taskStatus.statusText)}
