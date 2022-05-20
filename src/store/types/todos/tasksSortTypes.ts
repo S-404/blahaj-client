@@ -1,10 +1,6 @@
 import {TasksResponse} from '../../../services/types/tasksResponse'
 
 export interface TasksSortState {
-    tasksSort: TasksSortTypes
-}
-
-export interface TasksSortTypes {
     criteria: keyof TasksResponse;
     order: SortOrderValue;
 }
@@ -22,7 +18,7 @@ export enum TasksSortActionTypes {
 
 interface SetSortTasksAction {
     type: TasksSortActionTypes.SET_SORT_TASKS;
-    value: TasksSortTypes;
+    value: TasksSortState;
 }
 
 export type TaskSortAction = SetSortTasksAction
