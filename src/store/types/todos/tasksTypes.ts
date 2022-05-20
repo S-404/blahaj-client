@@ -1,12 +1,10 @@
-import {TasksResponse} from '../../services/types/tasksResponse'
-import {ITaskHref, TaskHrefsResponse} from '../../services/types/taskHrefsResponse'
+import {TasksResponse} from '../../../services/types/tasksResponse'
+import {TaskHrefsResponse} from '../../../services/types/taskHrefsResponse'
 
 export interface TasksState {
     tasks: TasksResponse[];
     loading: boolean;
     error: null | string;
-    selectedTask: TasksResponse;
-    selectedTaskHref: ITaskHref;
 }
 
 export enum TasksActionTypes {
@@ -16,11 +14,12 @@ export enum TasksActionTypes {
     ADD_TASK = 'ADD_TASK',
     REMOVE_TASK = 'REMOVE_TASK',
     UPDATE_TASK = 'UPDATE_TASK',
-    SET_SELECTED_TASK = 'SET_SELECTED_TASK',
+}
+
+export enum TaskHrefActionTypes{
     ADD_HREF = 'ADD_HREF',
     DELETE_HREF = 'DELETE_HREF',
     UPDATE_HREF = 'UPDATE_HREF',
-    SET_SELECTED_HREF = 'SET_SELECTED_HREF',
 }
 
 interface FetchTasksAction {
@@ -52,29 +51,20 @@ interface UpdateTaskAction {
     value: TasksResponse;
 }
 
-interface SetSelectedTaskAction {
-    type: TasksActionTypes.SET_SELECTED_TASK;
-    value: TasksResponse;
-}
 
-interface AddHrefAction {
-    type: TasksActionTypes.ADD_HREF;
+export interface AddHrefAction {
+    type: TaskHrefActionTypes.ADD_HREF;
     value: TaskHrefsResponse;
 }
 
-interface DeleteHrefAction {
-    type: TasksActionTypes.DELETE_HREF;
+export interface DeleteHrefAction {
+    type: TaskHrefActionTypes.DELETE_HREF;
     value: TaskHrefsResponse;
 }
 
-interface UpdateHrefAction {
-    type: TasksActionTypes.UPDATE_HREF;
+export interface UpdateHrefAction {
+    type: TaskHrefActionTypes.UPDATE_HREF;
     value: TaskHrefsResponse;
-}
-
-interface SetSelectedHrefAction {
-    type: TasksActionTypes.SET_SELECTED_HREF;
-    value: ITaskHref;
 }
 
 
@@ -85,8 +75,6 @@ export type  TasksAction =
     | AddTaskAction
     | RemoveTaskAction
     | UpdateTaskAction
-    | SetSelectedTaskAction
     | AddHrefAction
     | DeleteHrefAction
     | UpdateHrefAction
-    | SetSelectedHrefAction

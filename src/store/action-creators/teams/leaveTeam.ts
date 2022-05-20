@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
 import TeamsService from '../../../services/teamsService'
-import {UserParticipationAction, UserParticipationActionTypes} from '../../types/userParticipationTypes'
+import {UserParticipationAction, UserParticipationActionTypes} from '../../types/teams/userParticipationTypes'
 
 export const leaveTeam = (teamId:number) => {
     return async (dispatch: Dispatch<UserParticipationAction>) => {

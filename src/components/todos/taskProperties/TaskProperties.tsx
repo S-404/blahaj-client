@@ -9,7 +9,7 @@ import TaskHrefs from '../taskHrefs/TaskHrefs'
 const TaskProperties: FC = () => {
 
     const {updateTaskInfo, setEditTaskModal, removeTask} = useActions()
-    const {selectedTask} = useTypedSelector(state => state.tasks)
+    const {selectedTask} = useTypedSelector(state => state.selectedTask)
     const [task, setTask] = useState<TasksResponse>(selectedTask)
 
     const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

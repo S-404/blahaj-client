@@ -1,7 +1,7 @@
 import {TaskHrefResponseProps} from '../../../../services/types/taskHrefsResponse'
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {TaskHrefActionTypes, TasksAction, TasksActionTypes} from '../../../types/todos/tasksTypes'
 import TasksService from '../../../../services/tasksService'
 
 export const updateHref = (href: TaskHrefResponseProps) => {
@@ -9,7 +9,7 @@ export const updateHref = (href: TaskHrefResponseProps) => {
         try {
             dispatch({type: TasksActionTypes.FETCH_TASKS})
             const response = await TasksService.updateTaskHref(href)
-            dispatch({type: TasksActionTypes.UPDATE_HREF, value: response.data})
+            dispatch({type: TaskHrefActionTypes.UPDATE_HREF, value: response.data})
         } catch (e) {
             let errMsg
             if (axios.isAxiosError(e)) {

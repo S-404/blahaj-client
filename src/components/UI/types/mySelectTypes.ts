@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface MySelectOption {
-    value: number;
+    value: number | string;
     name: string;
 }
 

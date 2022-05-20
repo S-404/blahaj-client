@@ -2,22 +2,23 @@ import React, {FC} from 'react'
 import TaskList from './taskList/TaskList'
 import {useActions} from '../../hooks/useActions'
 import NewTaskForm from './newTaskForm/NewTaskForm'
-import {Button,Container} from 'reactstrap'
+import {Button, Container} from 'reactstrap'
 import MyModal from '../UI/MyModal'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import TaskProperties from './taskProperties/TaskProperties'
+import TaskListHeader from './taskListHeader/TaskListHeader'
 
 const Tasks: FC = () => {
 
-    const {newTaskModal,editTaskModal} = useTypedSelector(state => state.modals)
-    const {setNewTaskModal,setEditTaskModal} = useActions()
+    const {newTaskModal, editTaskModal} = useTypedSelector(state => state.modals)
+    const {setNewTaskModal, setEditTaskModal} = useActions()
 
     const addTaskButtonHandler = () => {
         setNewTaskModal(true)
     }
 
     return (
-        <Container className='col-md-6'>
+        <Container className="col-md-6">
 
             <MyModal
                 title={`New Task`}
@@ -32,6 +33,8 @@ const Tasks: FC = () => {
                 visible={editTaskModal}
                 children={<TaskProperties/>}
             />
+
+            <TaskListHeader/>
 
             <Button onClick={addTaskButtonHandler}>
                 Add task

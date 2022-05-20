@@ -1,4 +1,4 @@
-import {UserParticipationResponse} from '../../services/types/teamsResponse'
+import {UserParticipationResponse} from '../../../services/types/teamsResponse'
 
 export interface UserParticipationState {
     userParticipation: UserParticipationResponse[];

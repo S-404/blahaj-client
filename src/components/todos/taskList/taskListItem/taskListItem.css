@@ -1,0 +1,32 @@
+.task-list-item {
+    position: relative;
+}
+
+.task-list-item .task-list-item__action-buttons, .task-list-item .task-list-item__status-badge{
+    flex-direction: row;
+    position: absolute;
+    right: 1em;
+    background-color: inherit;
+}
+
+.task-list-item:hover > .task-list-item__action-buttons {
+    display: flex;
+    top: .5em;
+}
+
+.task-list-item .task-list-item__action-buttons{
+    display: none;
+}
+
+.task-list-item:hover > .task-list-item__status-badge {
+    display: none;
+}
+
+.task-list-item .task-list-item__status-badge{
+    display: flex;
+    top: 1em;
+}
+
+.task-list-item .task-list-item__action-buttons button {
+    margin: 0 .2em;
+}

@@ -3,3 +3,8 @@ export function pad(num: number, places: number) {
 }
 
 export const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+export function dateWithOffset(date: Date) {
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset())
+    return date
+}

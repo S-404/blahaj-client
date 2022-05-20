@@ -1,6 +1,6 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {UserParticipationAction, UserParticipationActionTypes} from '../../types/userParticipationTypes'
+import {UserParticipationAction, UserParticipationActionTypes} from '../../types/teams/userParticipationTypes'
 import TeamsService from '../../../services/teamsService'
 
 export const fetchUserParticipation = () => {

@@ -1,9 +1,9 @@
 import {Dispatch} from 'redux'
 import {TasksResponse} from '../../../../services/types/tasksResponse'
-import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {SelectedTaskAction, SelectedTaskActionTypes} from '../../../types/todos/selectedTaskTypes'
 
 export const setSelectedTask = (value: TasksResponse) => {
-    return (dispatch: Dispatch<TasksAction>) => {
-        dispatch({type: TasksActionTypes.SET_SELECTED_TASK, value})
+    return (dispatch: Dispatch<SelectedTaskAction>) => {
+        dispatch({type: SelectedTaskActionTypes.SET_SELECTED_TASK, value})
     }
 }

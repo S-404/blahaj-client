@@ -7,7 +7,7 @@ import {taskHrefFormDataEntryValues} from '../helpers/taskHrefFormDataEntryValue
 
 const EditHrefForm: FC = () => {
 
-    const {selectedTask, selectedTaskHref} = useTypedSelector(state => state.tasks)
+    const {selectedTask, selectedTaskHref} = useTypedSelector(state => state.selectedTask)
     const {updateHref,setEditTaskHrefModal} = useActions()
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

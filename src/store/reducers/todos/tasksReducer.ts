@@ -1,13 +1,10 @@
-import {TasksAction, TasksActionTypes, TasksState} from '../../types/tasksTypes'
+import {TaskHrefActionTypes, TasksAction, TasksActionTypes, TasksState} from '../../types/todos/tasksTypes'
 import {TasksResponse} from '../../../services/types/tasksResponse'
-import {TaskHrefResponseProps} from '../../../services/types/taskHrefsResponse'
 
 const tasksState: TasksState = {
     tasks: [],
     loading: false,
     error: null,
-    selectedTask: {} as TasksResponse,
-    selectedTaskHref: {} as TaskHrefResponseProps
 }
 
 export const tasksReducer = (state = tasksState, action: TasksAction): TasksState => {
@@ -40,77 +37,33 @@ export const tasksReducer = (state = tasksState, action: TasksAction): TasksStat
                 tasks: [...newTasksObj]
             }
         }
-        case TasksActionTypes.SET_SELECTED_TASK:
-            return {...state, selectedTask: action.value}
 
-        case TasksActionTypes.SET_SELECTED_HREF:
-            return {...state, selectedTaskHref: action.value}
-
-        case TasksActionTypes.ADD_HREF: {
-
-            const taskIndex = state
-                .tasks
-                .findIndex(task => task.id === action.value.taskId)
-
+        case TaskHrefActionTypes.ADD_HREF: {
             const newTasksObj: TasksResponse[] = JSON.parse(JSON.stringify(state.tasks))
-
+            const taskIndex = newTasksObj.findIndex(task => task.id === action.value.taskId)
             newTasksObj[taskIndex].taskHrefs.push(action.value)
-            const newTasksHrefsObj = [...newTasksObj[taskIndex].taskHrefs]
 
-            return {
-                ...state,
-                tasks: [...newTasksObj],
-                selectedTask: {
-                    ...state.selectedTask,
-                    taskHrefs: [...newTasksHrefsObj]
-                }
-            }
+            return {...state, tasks: [...newTasksObj]}
         }
 
-        case TasksActionTypes.DELETE_HREF: {
-
-            const taskIndex = state
-                .tasks
-                .findIndex(task => task.id === action.value.taskId)
+        case TaskHrefActionTypes.DELETE_HREF: {
             const newTasksObj: TasksResponse[] = JSON.parse(JSON.stringify(state.tasks))
-
+            const taskIndex = newTasksObj.findIndex(task => task.id === action.value.taskId)
             newTasksObj[taskIndex].taskHrefs = newTasksObj[taskIndex]
                 .taskHrefs
                 .filter(href => href.id !== action.value.id)
 
-            const newTasksHrefsObj = [...newTasksObj[taskIndex].taskHrefs]
-            return {
-                ...state,
-                tasks: [...newTasksObj],
-                selectedTask: {
-                    ...state.selectedTask,
-                    taskHrefs: [...newTasksHrefsObj]
-                }
-            }
-
+            return {...state, tasks: [...newTasksObj]}
         }
-        case TasksActionTypes.UPDATE_HREF: {
-
-            const taskIndex = state
-                .tasks
-                .findIndex(task => task.id === action.value.taskId)
+        case TaskHrefActionTypes.UPDATE_HREF: {
             const newTasksObj: TasksResponse[] = JSON.parse(JSON.stringify(state.tasks))
-
+            const taskIndex = newTasksObj.findIndex(task => task.id === action.value.taskId)
             const hrefIndex = newTasksObj[taskIndex]
                 .taskHrefs
                 .findIndex(href => href.id === action.value.id)
-
             newTasksObj[taskIndex].taskHrefs[hrefIndex] = action.value
-            const newTaskHrefsObj = [...newTasksObj[taskIndex].taskHrefs]
 
-            return {
-                ...state,
-                tasks: [...newTasksObj],
-                selectedTask: {
-                    ...state.selectedTask,
-                    taskHrefs: [...newTaskHrefsObj]
-                }
-            }
+            return {...state, tasks: [...newTasksObj]}
         }
 
         default:

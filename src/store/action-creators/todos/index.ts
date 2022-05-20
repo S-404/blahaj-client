@@ -8,6 +8,9 @@ import {createHref} from './hrefs/createHref'
 import {deleteHref} from './hrefs/deleteHref'
 import {updateHref} from './hrefs/updateHref'
 import {setSelectedHref} from './hrefs/setSelectedHref'
+import {setTaskGroupFilter} from './filter-sort/setTaskGroupFilter'
+import {setStatusFilter} from './filter-sort/setStatusFilter'
+import {setTasksSort} from './filter-sort/setTasksSort'
 
 
 export const tasksActions = {
@@ -21,4 +24,7 @@ export const tasksActions = {
     deleteHref,
     updateHref,
     setSelectedHref,
+    setTaskGroupFilter,
+    setStatusFilter,
+    setTasksSort
 }

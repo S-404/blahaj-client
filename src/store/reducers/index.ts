@@ -1,10 +1,13 @@
 import {combineReducers} from 'redux'
 import {isAuthReducer} from './authReducer'
 import {navReducer} from './navReducer'
-import {teamsReducer} from './teamsReducer'
-import {userParticipationReducer} from './userParticipationReducer'
+import {teamsReducer} from './teams/teamsReducer'
+import {userParticipationReducer} from './teams/userParticipationReducer'
 import {modalsReducer} from './modalsReducer'
 import {tasksReducer} from './todos/tasksReducer'
+import {selectedTaskReducer} from './todos/selectedTaskReducer'
+import {tasksFilterReducer} from './todos/tasksFilterReducer'
+import {tasksSortReducer} from './todos/tasksSortReducer'
 
 
 export const rootReducer = combineReducers({
@@ -13,7 +16,10 @@ export const rootReducer = combineReducers({
     teams: teamsReducer,
     participation: userParticipationReducer,
     modals: modalsReducer,
-    tasks: tasksReducer
+    tasks: tasksReducer,
+    selectedTask: selectedTaskReducer,
+    tasksFilter: tasksFilterReducer,
+    tasksSort: tasksSortReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

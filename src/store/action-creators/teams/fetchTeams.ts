@@ -1,6 +1,6 @@
 import {Dispatch} from "redux"
 import axios from "axios"
-import {TeamsAction, TeamsActionTypes} from '../../types/teamsTypes'
+import {TeamsAction, TeamsActionTypes} from '../../types/teams/teamsTypes'
 import TeamsService from '../../../services/teamsService'
 
 export const fetchTeams = () => {

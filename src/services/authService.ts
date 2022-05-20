@@ -13,7 +13,7 @@ export default class AuthService {
     }
 
     static async logout(): Promise<void> {
-        return _api.post('auth/logout')
+        return _api.post('/auth/logout')
     }
 
 }

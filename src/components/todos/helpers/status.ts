@@ -1,25 +1,27 @@
 import {IPeriodicityValues} from '../types/periodicityTypes'
 import {StatusAction, StatusActionsTextTypes, StatusText, StatusTextTypes} from '../types/statusTypes'
+import {dateWithOffset} from './utils'
 
-function dateWithOffset(date: Date) {
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset())
-    return date
-}
 
 export function defineStatus(
-    periodicity: number,
-    startedAt: Date,
-    finishedAt: Date,
-    deadline: number
+    {periodicity, startedAt, finishedAt, deadline}: {
+        periodicity: number,
+        startedAt: Date,
+        finishedAt: Date,
+        deadline: number
+    }
 ): StatusText {
 
     const checkDate: Date = new Date()
+    checkDate.setHours(0)
+    checkDate.setMinutes(0)
+
     const started: Date = dateWithOffset(new Date(startedAt))
     const finished: Date = dateWithOffset(new Date(finishedAt))
 
+
     switch (periodicity) {
         case IPeriodicityValues.DAILY:
-            checkDate.setHours(0)
             break
         case IPeriodicityValues.WEEKLY:
             checkDate.setDate(checkDate.getDate() - checkDate.getDay())
@@ -28,16 +30,16 @@ export function defineStatus(
             checkDate.setDate(1)
             break
     }
-    if (finished > started) {
-        return StatusTextTypes.FINISHED
-    }
+
     if (started > checkDate) {
+        if (finished > started) return StatusTextTypes.FINISHED
         return StatusTextTypes.STARTED
     }
+
     return checkDeadline(deadline, periodicity)
 }
 
-export const checkDeadline = (deadline: number, periodicity: number,): StatusText => {
+function checkDeadline(deadline: number, periodicity: number,): StatusText {
 
     const checkDate: Date = new Date()
     const now: Date = new Date()
@@ -64,7 +66,7 @@ export const checkDeadline = (deadline: number, periodicity: number,): StatusTex
 }
 
 
-export function getActionText(status: StatusText): StatusAction {
+function getActionText(status: StatusText): StatusAction {
 
     switch (status) {
         case StatusTextTypes.STARTED:
@@ -77,7 +79,33 @@ export function getActionText(status: StatusText): StatusAction {
 }
 
 export function getTaskStatus(periodicity: number, startedAt: Date, finishedAt: Date, deadline: number) {
-    const statusText = defineStatus(periodicity, startedAt, finishedAt, deadline)
+    const statusText = defineStatus({periodicity, startedAt, finishedAt, deadline})
     const actionText = getActionText(statusText)
     return {statusText, actionText}
+}
+
+export const defineStatusBadgeColor = (statusText: StatusText) => {
+    switch (statusText) {
+        case StatusTextTypes.STARTED:
+            return 'primary'
+        case StatusTextTypes.FINISHED:
+            return 'success'
+        case StatusTextTypes.NOT_STARTED_MISSED:
+            return 'danger'
+        case StatusTextTypes.NOT_STARTED_REQUIRED:
+            return 'warning'
+        default:
+            return 'light'
+    }
+}
+
+export const defineActionButtonColor = (statusText: StatusText) => {
+    switch (statusText) {
+        case StatusTextTypes.STARTED:
+            return 'success'
+        case StatusTextTypes.FINISHED:
+            return 'secondary'
+        default:
+            return 'primary'
+    }
 }

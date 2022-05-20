@@ -1,6 +1,6 @@
 import {Dispatch} from 'redux'
 import axios from 'axios'
-import {TasksAction, TasksActionTypes} from '../../../types/tasksTypes'
+import {TaskHrefActionTypes, TasksAction, TasksActionTypes} from '../../../types/todos/tasksTypes'
 import TasksService from '../../../../services/tasksService'
 
 export const deleteHref = (id: number) => {
@@ -8,7 +8,7 @@ export const deleteHref = (id: number) => {
         try {
             dispatch({type: TasksActionTypes.FETCH_TASKS})
             const response = await TasksService.deleteTaskHref(id)
-            dispatch({type: TasksActionTypes.DELETE_HREF, value: response.data})
+            dispatch({type: TaskHrefActionTypes.DELETE_HREF, value: response.data})
         } catch (e) {
             let errMsg
             if (axios.isAxiosError(e)) {

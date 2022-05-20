@@ -1,4 +1,4 @@
-import {TeamsAction, TeamsActionTypes, TeamsState} from '../types/teamsTypes'
+import {TeamsAction, TeamsActionTypes, TeamsState} from '../../types/teams/teamsTypes'
 
 const teamsState: TeamsState = {
     teams: [],

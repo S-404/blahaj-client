@@ -2,7 +2,7 @@ import {Dispatch} from 'redux'
 import axios from 'axios'
 import TeamsService from '../../../services/teamsService'
 import {ITeamFields} from '../../../services/types/teamsResponse'
-import {UserParticipationAction, UserParticipationActionTypes} from '../../types/userParticipationTypes'
+import {UserParticipationAction, UserParticipationActionTypes} from '../../types/teams/userParticipationTypes'
 
 export const addTeam = (data: ITeamFields) => {
     return async (dispatch: Dispatch<UserParticipationAction>) => {
