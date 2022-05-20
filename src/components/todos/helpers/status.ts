@@ -3,11 +3,13 @@ import {StatusAction, StatusActionsTextTypes, StatusText, StatusTextTypes} from 
 import {dateWithOffset} from './utils'
 
 
-function defineStatus(
-    periodicity: number,
-    startedAt: Date,
-    finishedAt: Date,
-    deadline: number
+export function defineStatus(
+    {periodicity, startedAt, finishedAt, deadline}: {
+        periodicity: number,
+        startedAt: Date,
+        finishedAt: Date,
+        deadline: number
+    }
 ): StatusText {
 
     const checkDate: Date = new Date()
@@ -77,7 +79,7 @@ function getActionText(status: StatusText): StatusAction {
 }
 
 export function getTaskStatus(periodicity: number, startedAt: Date, finishedAt: Date, deadline: number) {
-    const statusText = defineStatus(periodicity, startedAt, finishedAt, deadline)
+    const statusText = defineStatus({periodicity, startedAt, finishedAt, deadline})
     const actionText = getActionText(statusText)
     return {statusText, actionText}
 }
