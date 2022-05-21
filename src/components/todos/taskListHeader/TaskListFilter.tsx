@@ -5,6 +5,7 @@ import {useTaskGroups} from '../../../hooks/useTaskGroups'
 import {useActions} from '../../../hooks/useActions'
 import {TaskFilterStatus} from '../../../store/types/todos/tasksFilterTypes'
 import {useStatusFilterSelectOptions} from '../../../hooks/useStatusFilterSelectOptions'
+import {Label} from 'reactstrap'
 
 const TaskListFilter: FC = () => {
 
@@ -24,17 +25,23 @@ const TaskListFilter: FC = () => {
 
 
     return (
-        <div>
-            <MySelect
-                name={'taskGroupFilter'}
-                options={taskGroupsOptions}
-                onChange={taskGroupFilterHandler}
-            />
-            <MySelect
-                name={'taskStatusFilter'}
-                options={taskStatusOptions}
-                onChange={taskStatusFilterHandler}
-            />
+        <div className="d-flex flex-row">
+            <div className="d-flex flex-row align-items-center">
+                <Label className="text-nowrap m-1">Task Group</Label>
+                <MySelect
+                    name={'taskGroupFilter'}
+                    options={taskGroupsOptions}
+                    onChange={taskGroupFilterHandler}
+                />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+                <Label className="text-nowrap m-1">Status</Label>
+                <MySelect
+                    name={'taskStatusFilter'}
+                    options={taskStatusOptions}
+                    onChange={taskStatusFilterHandler}
+                />
+            </div>
         </div>
     )
 }

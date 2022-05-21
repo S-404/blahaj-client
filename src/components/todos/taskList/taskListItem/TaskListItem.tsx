@@ -1,6 +1,6 @@
 import React, {FC, useMemo} from 'react'
 import {TasksResponse} from '../../../../services/types/tasksResponse'
-import {Badge, Button, ListGroupItem, ListGroupItemHeading} from 'reactstrap'
+import {Badge, Button, ListGroupItem, ListGroupItemText} from 'reactstrap'
 import {defineActionButtonColor, defineStatusBadgeColor, getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
@@ -8,10 +8,12 @@ import TaskListItemHref from './TaskListItemHref'
 import TaskNoteBadge from './TaskNoteBadge'
 import {getDeadlineValue} from '../../helpers/deadline'
 import './taskListItem.css'
+import {useTypedSelector} from '../../../../hooks/useTypedSelector'
 
 const TaskListItem: FC<TasksResponse> = (task) => {
 
     const {updateTaskStatus, setEditTaskModal, setSelectedTask} = useActions()
+    const {taskGroup} = useTypedSelector(state => state.tasksFilter)
 
     const taskStatus: ITaskStatus = useMemo(() => {
         return getTaskStatus(task.periodicity, task.startedAt, task.finishedAt, task.deadline)
@@ -34,30 +36,38 @@ const TaskListItem: FC<TasksResponse> = (task) => {
             className="task-list-item d-flex flex-row"
         >
 
-            <div className="d-flex flex-column col-2">
+            <div className="col-2">
                 <b> {getDeadlineValue(task.deadline, task.periodicity)}</b>
             </div>
 
-            <ListGroupItemHeading>
-                {task.name}
-            </ListGroupItemHeading>
-
             <div>
-                <TaskNoteBadge
-                    id={task.id}
-                    note={task.note}
-                />
-
+                {!taskGroup ?
+                    <Badge
+                        color="light"
+                        className="text-secondary"
+                    >{task.taskGroup}</Badge>
+                    : null}
             </div>
 
-            <div className='task-list-item__status-badge'>
+            <ListGroupItemText>
+                {task.name}
+            </ListGroupItemText>
+
+
+            <div className="task-list-item__status-badge">
                 <Badge color={defineStatusBadgeColor(taskStatus.statusText)}>
                     {taskStatus.statusText}
                 </Badge>
             </div>
 
             <div className="task-list-item__action-buttons">
+                <TaskNoteBadge
+                    id={task.id}
+                    note={task.note}
+                />
+
                 <TaskListItemHref taskHrefs={task.taskHrefs}/>
+
                 <div>
 
                     <Button
