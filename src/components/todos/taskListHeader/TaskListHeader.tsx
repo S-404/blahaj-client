@@ -4,18 +4,27 @@ import TaskListSort from './TaskListSort'
 import {
     AccordionBody,
     AccordionHeader,
-    AccordionItem,
+    AccordionItem, Badge,
     ListGroup,
     ListGroupItem,
     UncontrolledAccordion
 } from 'reactstrap'
+import {useTypedSelector} from '../../../hooks/useTypedSelector'
+import {FilterAdditionalValues} from '../../../store/types/todos/tasksFilterTypes'
 
 const TaskListHeader: FC = () => {
+
+    const {taskGroup,status} = useTypedSelector(state => state.tasksFilter)
+
     return (
         <UncontrolledAccordion open="0">
             <AccordionItem>
 
-                <AccordionHeader targetId="1"> Filter / Sort </AccordionHeader>
+                <AccordionHeader targetId="1">
+                    <span className='me-2'>Filter / Sort</span>
+                    {taskGroup? <Badge>{taskGroup}</Badge>:null}
+                    {status!==FilterAdditionalValues.ALL? <Badge>{status}</Badge>:null}
+                </AccordionHeader>
 
                 <AccordionBody accordionId="1">
                     <ListGroup>
