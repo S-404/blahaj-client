@@ -18,7 +18,7 @@ const Tasks: FC = () => {
     }
 
     return (
-        <Container className="col-md-7 h-100">
+        <Container className="col-md-7 h-75">
 
             <MyModal
                 title={`New Task`}
@@ -40,13 +40,12 @@ const Tasks: FC = () => {
                 block
                 outline
                 onClick={addTaskButtonHandler}
-                className='mt-2 mb-2'
+                className="mt-2 mb-2"
             >
                 Add task
             </Button>
-            <Container className='h-75'>
-                <TaskList/>
-            </Container>
+
+            <TaskList/>
 
 
         </Container>

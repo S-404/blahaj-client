@@ -2,8 +2,14 @@ import React, {FC, useEffect} from 'react'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import TaskListItem from './taskListItem/TaskListItem'
 import {useActions} from '../../../hooks/useActions'
-import {ListGroup} from 'reactstrap'
 import {useTaskList} from '../../../hooks/useTaskList'
+import {FixedSizeList} from 'react-window'
+import AutoSizer from 'react-virtualized-auto-sizer'
+
+interface Row {
+    index: number;
+    style: {};
+}
 
 const TaskList: FC = () => {
 
@@ -17,14 +23,34 @@ const TaskList: FC = () => {
         fetchTasks(selectedTeam.id)
     }, [selectedTeam.id])
 
+
     const sortedFilteredTaskList = useTaskList(tasks, taskFilter, taskSort)
 
-    return (
-        <ListGroup>
-            {sortedFilteredTaskList.map(task => (
+    const Row: FC<Row> = ({index, style}) => {
+        const task = sortedFilteredTaskList[index]
+        return (
+            <div style={style}>
                 <TaskListItem key={task.id} {...task}/>
-            ))}
-        </ListGroup>
+            </div>
+        )
+    }
+
+    if (!sortedFilteredTaskList.length) return (<i>List is Empty</i>)
+
+    return (
+        <AutoSizer>
+            {({height, width}) => (
+                <FixedSizeList
+                    className="list-group"
+                    height={height}
+                    itemCount={sortedFilteredTaskList.length}
+                    itemSize={41}
+                    width={width}
+                >
+                    {Row}
+                </FixedSizeList>
+            )}
+        </AutoSizer>
     )
 }
 

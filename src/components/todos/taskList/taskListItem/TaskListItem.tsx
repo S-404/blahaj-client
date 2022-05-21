@@ -1,6 +1,6 @@
 import React, {FC, useMemo} from 'react'
 import {TasksResponse} from '../../../../services/types/tasksResponse'
-import {Badge, Button, ListGroupItem, ListGroupItemText} from 'reactstrap'
+import {Badge, Button, ListGroupItem} from 'reactstrap'
 import {defineActionButtonColor, defineStatusBadgeColor, getTaskStatus} from '../../helpers/status'
 import {ITaskStatus} from '../../types/statusTypes'
 import {useActions} from '../../../../hooks/useActions'
@@ -40,18 +40,18 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                 <b> {getDeadlineValue(task.deadline, task.periodicity)}</b>
             </div>
 
-            <div>
+            <div className="d-flex flex-row  overflow-hidden">
                 {!taskGroup ?
                     <Badge
                         color="light"
-                        className="text-secondary"
+                        className="text-secondary me-2"
                     >{task.taskGroup}</Badge>
                     : null}
-            </div>
+                <span className="text-nowrap">
+                    {task.name}
+                </span>
 
-            <ListGroupItemText>
-                {task.name}
-            </ListGroupItemText>
+            </div>
 
 
             <div className="task-list-item__status-badge">
@@ -69,7 +69,6 @@ const TaskListItem: FC<TasksResponse> = (task) => {
                 <TaskListItemHref taskHrefs={task.taskHrefs}/>
 
                 <div>
-
                     <Button
                         outline
                         size="sm"
