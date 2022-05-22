@@ -3,7 +3,8 @@ import {SortOrderValues, TaskSortAction, TasksSortActionTypes, TasksSortState} f
 
 const tasksSortState: TasksSortState = {
     criteria: 'deadline',
-    order: SortOrderValues.ASC
+    order: SortOrderValues.ASC,
+    isGrouped: true,
 }
 
 export const tasksSortReducer = (state = tasksSortState, action: TaskSortAction) => {

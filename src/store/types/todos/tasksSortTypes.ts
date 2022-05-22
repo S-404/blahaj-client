@@ -3,6 +3,7 @@ import {TasksResponse} from '../../../services/types/tasksResponse'
 export interface TasksSortState {
     criteria: keyof TasksResponse;
     order: SortOrderValue;
+    isGrouped: boolean;
 }
 
 export enum SortOrderValues {

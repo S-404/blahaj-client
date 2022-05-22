@@ -11,7 +11,7 @@
 
 .task-list-item:hover > .task-list-item__action-buttons {
     display: flex;
-    top: .5em;
+    top: .3rem;
 }
 
 .task-list-item .task-list-item__action-buttons{
@@ -24,7 +24,7 @@
 
 .task-list-item .task-list-item__status-badge{
     display: flex;
-    top: 1em;
+    top: .7em;
 }
 
 .task-list-item .task-list-item__action-buttons button {

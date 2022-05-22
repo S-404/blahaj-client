@@ -6,14 +6,14 @@ import Tasks from '../components/todos/Tasks'
 
 const TodosPage = () => {
 
-    const {selectedTeam} = useTypedSelector(state => state.nav)
+    const {selectedNavTeam} = useTypedSelector(state => state.nav)
 
     const {setSelectedPage} = useActions()
     useEffect(()=>{
         setSelectedPage('Team Routines')
     },[])
 
-    if(!selectedTeam.id) return (
+    if(!selectedNavTeam.id) return (
         <>
             <h5>Choose Your Team</h5>
             <TeamSelector/>

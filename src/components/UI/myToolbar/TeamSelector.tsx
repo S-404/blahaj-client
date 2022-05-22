@@ -5,9 +5,9 @@ import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from '
 
 const TeamSelector = () => {
 
-    const {selectedTeam} = useTypedSelector(state => state.nav)
+    const {selectedNavTeam} = useTypedSelector(state => state.nav)
     const {userParticipation} = useTypedSelector(state => state.participation)
-    const {fetchUserParticipation, setSelectedTeam} = useActions()
+    const {fetchUserParticipation, setSelectedNavTeam} = useActions()
 
     useEffect(() => {
         if (!userParticipation.length) {
@@ -31,7 +31,7 @@ const TeamSelector = () => {
     function setSelectedTeamByTeamId(teamId: number) {
         const objIndex = userParticipation.findIndex(team => team.teamId === teamId)
         const selectedTeam = userParticipation[objIndex].team
-        setSelectedTeam(selectedTeam)
+        setSelectedNavTeam(selectedTeam)
     }
 
 
@@ -42,7 +42,7 @@ const TeamSelector = () => {
                 caret
                 color={'primary'}
             >
-                {`MY TEAM: ${selectedTeam.id ? selectedTeam.name : 'not selected'}`}
+                {`MY TEAM: ${selectedNavTeam.id ? selectedNavTeam.name : 'not selected'}`}
             </DropdownToggle>
 
             <DropdownMenu>

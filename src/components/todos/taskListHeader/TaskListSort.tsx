@@ -6,6 +6,7 @@ import {TasksResponse} from '../../../services/types/tasksResponse'
 import {useTypedSelector} from '../../../hooks/useTypedSelector'
 import {MySelectOption} from '../../UI/types/mySelectTypes'
 import {useTasksSortSelectOptions} from '../../../hooks/useTasksSortSelectOptions'
+import {Input, Label} from 'reactstrap'
 
 const TaskListSort: FC = () => {
 
@@ -33,18 +34,46 @@ const TaskListSort: FC = () => {
         })
     }
 
+    const taskGroupCheckboxHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTasksSort({
+            ...tasksSort,
+            isGrouped: e.target.checked as boolean
+        })
+    }
+
     return (
-        <div>
-            <MySelect
-                name={'tasksSortCriteria'}
-                options={taskSortCriteriaOptions}
-                onChange={taskSortCriteriaSelectHandler}
-            />
-            <MySelect
-                name={'tasksSortOrder'}
-                options={taskSortOrderOptions}
-                onChange={taskSortOrderSelectHandler}
-            />
+        <div className="d-flex flex-row">
+            <div className="d-flex flex-row align-items-center">
+                <Label className="text-nowrap m-1">Sort by</Label>
+                <MySelect
+                    name={'tasksSortCriteria'}
+                    options={taskSortCriteriaOptions}
+                    onChange={taskSortCriteriaSelectHandler}
+                />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+                <Label className="text-nowrap m-1">Order</Label>
+                <MySelect
+                    name={'tasksSortOrder'}
+                    options={taskSortOrderOptions}
+                    onChange={taskSortOrderSelectHandler}
+                />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+                <Label
+                    for="sortGroupCheckbox"
+                    className="text-nowrap m-1"
+                >
+                    Group by periodicity
+                </Label>
+                <Input
+                    id="sortGroupCheckbox"
+                    type="checkbox"
+                    checked={tasksSort.isGrouped}
+                    onChange={taskGroupCheckboxHandler}
+                />
+            </div>
+
         </div>
     )
 }

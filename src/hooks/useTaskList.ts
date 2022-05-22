@@ -44,8 +44,10 @@ export const useSortedTaskList = (tasks: TasksResponse[], sort: TasksSortState):
 
             return tasks.sort((a, b) => {
 
-                    if (a.periodicity < b.periodicity) return -1
-                    if (a.periodicity > b.periodicity) return 1
+                    if (sort.isGrouped) {
+                        if (a.periodicity < b.periodicity) return -1
+                        if (a.periodicity > b.periodicity) return 1
+                    }
 
                     if (a[sort.criteria] < b[sort.criteria]) return -sortingOrderValue
                     if (a[sort.criteria] > b[sort.criteria]) return sortingOrderValue

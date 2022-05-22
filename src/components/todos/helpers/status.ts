@@ -95,7 +95,7 @@ export const defineStatusBadgeColor = (statusText: StatusText) => {
         case StatusTextTypes.NOT_STARTED_REQUIRED:
             return 'warning'
         default:
-            return 'light'
+            return 'secondary'
     }
 }
 

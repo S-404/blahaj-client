@@ -23,7 +23,7 @@ const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
             <Button
                 outline
                 color="danger"
-                size='sm'
+                size="sm"
                 onClick={leaveTeamHandler}
             >
                 Leave
@@ -31,7 +31,7 @@ const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
             <Button
                 outline
                 color="secondary"
-                size='sm'
+                size="sm"
             >
                 Edit
             </Button>
