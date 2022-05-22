@@ -2,6 +2,7 @@ import {ModalsAction, ModalsActionTypes, ModalsState} from '../types/modalsTypes
 
 const modalsState: ModalsState = {
     newTeamModal: false,
+    editTeamModal: false,
     deleteAlertModal: false,
     newTaskModal: false,
     editTaskModal: false,
@@ -13,6 +14,8 @@ export const modalsReducer = (state = modalsState, action: ModalsAction): Modals
     switch (action.type) {
         case ModalsActionTypes.SET_NEW_TEAM_MODAL:
             return {...state, newTeamModal: action.value}
+        case ModalsActionTypes.SET_EDIT_TEAM_MODAL:
+            return {...state, editTeamModal: action.value}
         case ModalsActionTypes.SET_DELETE_ALERT_MODAL:
             return {...state, deleteAlertModal: action.value}
         case ModalsActionTypes.SET_NEW_TASK_MODAL:
