@@ -22,7 +22,7 @@ const MyTeams: FC = () => {
 
     return (
         <Container>
-            <h5>My Teams:</h5>
+
             {loading ? <Spinner/> : null}
 
             {error ? < Alert severity="error">{error}</Alert> : null}

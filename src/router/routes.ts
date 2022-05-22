@@ -4,14 +4,16 @@ import RegistrationPage from '../pages/RegistrationPage'
 import UserPage from '../pages/UserPage'
 import TodosPage from '../pages/TodosPage'
 import HomePage from '../pages/HomePage'
+import TeamsPage from '../pages/TeamsPage'
 
 export const generalRoutes: RoutesTypes[] = [
     {path: '/', component: HomePage, shortName: 'Home'},
     {path: '/user', component: UserPage, shortName: 'Personal Page'},
+    {path: '/teams', component: TeamsPage, shortName: 'My Teams'},
 ]
 
 export const toolsRoutes: RoutesTypes[] = [
-    {path: '/teams', component: TodosPage, shortName: 'Team Routines'},
+    {path: '/todos', component: TodosPage, shortName: 'Team Routines'},
 ]
 
 export const privateRoutes: RoutesTypes[] = [

@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
-import MyTeams from '../teams/MyTeams'
-import {Card, CardBody, CardHeader, CardSubtitle, CardTitle, Button} from 'reactstrap'
+import {Button, Card, CardBody, CardHeader, CardSubtitle, CardTitle} from 'reactstrap'
+import {Link} from 'react-router-dom'
 
 const Profile: FC = () => {
 
@@ -27,10 +27,7 @@ const Profile: FC = () => {
                     Update credentials
                 </Button>
             </CardBody>
-
-
-            <MyTeams/>
-
+            <Button tag={Link} to={'/teams'}>My Teams</Button>
         </Card>
     )
 }
