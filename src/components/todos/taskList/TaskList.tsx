@@ -14,14 +14,14 @@ interface Row {
 const TaskList: FC = () => {
 
     const {tasks} = useTypedSelector(state => state.tasks)
-    const {selectedTeam} = useTypedSelector(state => state.nav)
+    const {selectedNavTeam} = useTypedSelector(state => state.nav)
     const taskSort = useTypedSelector(state => state.tasksSort)
     const taskFilter = useTypedSelector(state => state.tasksFilter)
     const {fetchTasks} = useActions()
 
     useEffect(() => {
-        fetchTasks(selectedTeam.id)
-    }, [selectedTeam.id])
+        fetchTasks(selectedNavTeam.id)
+    }, [selectedNavTeam.id])
 
 
     const sortedFilteredTaskList = useTaskList(tasks, taskFilter, taskSort)

@@ -3,13 +3,13 @@ import {ITeam} from '../../services/types/teamsResponse'
 export interface NavState {
     selectedPage: string;
     isOpenDrawer: boolean;
-    selectedTeam: ITeam;
+    selectedNavTeam: ITeam;
 }
 
 export enum NavActionTypes {
     SET_SELECTED_PAGE = "SET_SELECTED_PAGE",
     SET_IS_OPEN_DRAWER = "SET_IS_OPEN_DRAWER",
-    SET_SELECTED_TEAM = "SET_SELECTED_TEAM",
+    SET_SELECTED_NAV_TEAM = "SET_SELECTED_NAV_TEAM",
 }
 
 interface SetSelectedPageAction {
@@ -17,8 +17,8 @@ interface SetSelectedPageAction {
     value: string;
 }
 
-interface SetSelectedTeamAction {
-    type: NavActionTypes.SET_SELECTED_TEAM;
+interface SetSelectedNavTeamAction {
+    type: NavActionTypes.SET_SELECTED_NAV_TEAM;
     value: ITeam;
 }
 
@@ -28,4 +28,4 @@ interface SetIsOpenAction {
 }
 
 
-export type  NavAction = SetSelectedPageAction | SetIsOpenAction | SetSelectedTeamAction
+export type  NavAction = SetSelectedPageAction | SetIsOpenAction | SetSelectedNavTeamAction
