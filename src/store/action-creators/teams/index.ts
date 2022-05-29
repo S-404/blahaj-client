@@ -3,6 +3,7 @@ import {fetchUserParticipation} from './fetchUserParticipation'
 import {addTeam} from './addTeam'
 import {leaveTeam} from './leaveTeam'
 import {setSelectedTeam} from './setSelectedTeam'
+import {updateTeam} from './updateTeam'
 
 
 export const teamsActions = {
@@ -10,5 +11,6 @@ export const teamsActions = {
     fetchUserParticipation,
     addTeam,
     leaveTeam,
-    setSelectedTeam
+    setSelectedTeam,
+    updateTeam
 }

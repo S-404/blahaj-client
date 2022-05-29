@@ -4,14 +4,13 @@ import {useActions} from '../../hooks/useActions'
 import {Badge, Button, Label, ListGroupItem} from 'reactstrap'
 
 
-const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
+const MyTeam: FC<UserParticipationResponse> = ({isAdmin, team}) => {
 
-    const {leaveTeam} = useActions()
+    const {setSelectedTeam, setEditTeamModal} = useActions()
 
-    const leaveTeamHandler = () => {
-        if (window.confirm(`leave from '${team.name}' team`)) {
-            leaveTeam(teamId)
-        }
+    const propertiesButtonHandler = () => {
+        setSelectedTeam(team)
+        setEditTeamModal(true)
     }
 
     return (
@@ -22,18 +21,11 @@ const MyTeam: FC<UserParticipationResponse> = ({teamId, isAdmin, team}) => {
             <Badge color="secondary">{`participants: ${team.participants.length}`}</Badge>
             <Button
                 outline
-                color="danger"
-                size="sm"
-                onClick={leaveTeamHandler}
-            >
-                Leave
-            </Button>
-            <Button
-                outline
                 color="secondary"
                 size="sm"
+                onClick={propertiesButtonHandler}
             >
-                Edit
+                ...
             </Button>
         </ListGroupItem>
     )

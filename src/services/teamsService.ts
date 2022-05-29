@@ -1,6 +1,6 @@
 import {_api} from '../api'
 import {AxiosResponse} from 'axios'
-import {ITeamFields, TeamsResponse,UserParticipationResponse} from './types/teamsResponse'
+import {ITeamFields, TeamsResponse, UserParticipationResponse} from './types/teamsResponse'
 
 
 export default class TeamsService {
@@ -19,6 +19,10 @@ export default class TeamsService {
 
     static fetchUserParticipation(): Promise<AxiosResponse<UserParticipationResponse[]>> {
         return _api.get<UserParticipationResponse[]>(`teams/participant/`)
+    }
+
+    static updateTeam(data: ITeamFields): Promise<AxiosResponse<TeamsResponse>> {
+        return _api.put<TeamsResponse>(`teams/teams/`, data)
     }
 
 }
